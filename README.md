@@ -67,13 +67,13 @@ O objetivo é servir como **referência compartilhada entre as squads**, facilit
 
 ## 💻 2. Diretrizes Tecnológicas
 
-### ☕ Linguagem de programação — Java
+### ☕ Linguagem de programação — JavaScript
 
-Java foi definida como linguagem comum para o desenvolvimento das partes do projeto, favorecendo a familiaridade entre os integrantes e a integração do trabalho das squads.
+JavaScript foi definida como linguagem comum para o desenvolvimento das partes do projeto, favorecendo a familiaridade entre os integrantes e a integração do trabalho das squads.
 
-### 🍃 Framework — Spring
+### 🍃 Framework — NodeJS/NextJS
 
-O Spring foi indicado como framework para o desenvolvimento da aplicação. O uso de suas ferramentas deverá considerar as necessidades de cada serviço e os padrões de organização adotados pelo projeto.
+O NodeJS foi indicado como framework para o desenvolvimento da aplicação. O uso de suas ferramentas deverá considerar as necessidades de cada serviço e os padrões de organização adotados pelo projeto.
 
 ### 🐘 Banco de dados — PostgreSQL
 
@@ -162,43 +162,6 @@ Além dos componentes tradicionais do MVC, foi discutida uma estrutura que inclu
 5. O resultado retorna pelas camadas até ser apresentado ao usuário.
 
 Esse fluxo é ilustrativo. Model/Entities não representa necessariamente uma etapa sequencial depois do Repository: as entidades podem ser utilizadas por diferentes componentes durante o processamento.
-
-### 🧠 DDD — Domain-Driven Design
-
-DDD, ou *Domain-Driven Design*, é uma abordagem de desenvolvimento orientada ao domínio do negócio.
-
-Seu objetivo é organizar o software a partir dos conceitos, das regras e dos relacionamentos que representam o problema que a aplicação precisa resolver.
-
-**Ideia principal:** compreender o domínio e expressá-lo de maneira consistente no modelo e no código.
-
-Essa abordagem pode ajudar a representar regras de negócio complexas e estabelecer uma linguagem comum entre os integrantes do projeto.
-
-### 🧼 Clean Architecture — Arquitetura Limpa
-
-Clean Architecture é uma abordagem de organização arquitetural que busca separar responsabilidades e controlar as dependências entre os componentes.
-
-A proposta é manter as regras centrais do negócio independentes dos detalhes externos, como interfaces, frameworks e mecanismos de armazenamento.
-
-**Ideia principal:** permitir que mudanças em tecnologias externas tenham o menor impacto possível sobre as regras principais da aplicação.
-
-### 🔌 Arquitetura Hexagonal — Ports and Adapters
-
-A Arquitetura Hexagonal, também chamada de *Ports and Adapters*, organiza a aplicação em torno de um núcleo de negócio que se comunica com o exterior por meio de portas e adaptadores.
-
-- **Portas:** definem interfaces pelas quais o núcleo da aplicação se comunica com outros componentes.
-- **Adaptadores:** implementam a comunicação com sistemas externos, como bancos de dados, APIs e interfaces de usuário.
-
-**Ideia principal:** reduzir o acoplamento entre as regras de negócio e as tecnologias utilizadas para interagir com o ambiente externo.
-
-### 🔎 Comparação entre as abordagens
-
-| Abordagem | Foco principal |
-|---|---|
-| **MVC** | Separar a interface, o controle das solicitações e a representação dos dados. |
-| **DDD** | Modelar o software de acordo com o domínio e as regras do negócio. |
-| **Clean Architecture** | Organizar responsabilidades e controlar as dependências entre componentes. |
-| **Arquitetura Hexagonal** | Isolar o núcleo da aplicação por meio de portas e adaptadores. |
----
 
 ## 🔍 5. Revisão de Código e Boas Práticas
 
