@@ -32,7 +32,7 @@ A opção torna mais simples assegurar, em uma mesma transação SQL, a conclus�
 ### 2.1. Justificativa da arquitetura escolhida
 
 - **Manutenibilidade:** apresentação, negócio e persistência separadas por contratos de funções; cada Squad possui seu domínio e revisa alterações nele.
-- **Consistência:** transações PostgreSQL para operações de XP/Gold/estoque, com idempotência e controle de concorrência.
+- **Consistência:** transações PostgreSQL para operações de XP/Gold, com idempotência e controle de concorrência.
 - **Escalabilidade pragmática:** Next.js replicável em Node.js, renderização server-side e consultas paginadas/otimizadas; a base relacional segue como gargalo potencial a medir.
 - **Segurança:** autenticação centralizada, autorização revalidada em cada caso de uso e nenhum segredo ou SQL no bundle do navegador.
 - **Aderência pedagógica:** apenas **um estilo arquitetural**, apesar de utilizar subcamadas internas e modularização por domínio.
@@ -105,7 +105,7 @@ A opção torna mais simples assegurar, em uma mesma transação SQL, a conclus�
 | **Squad 1** | Identidade e Acesso | **1 — Apresentação** | `app/api/v1/auth`, páginas de login/cadastro, `presentation/security`, DTOs/validação; apoio em `business/auth`, `persistence/auth`. | Cadastro, login, logout, sessão/JWT, perfis, papéis e regras de acesso; convenções de autenticação para os demais Squads. |
 | **Squad 2** | Quests e Gamificação | **2 — Negócio** | `business/application/quests`, `business/domain/quests`, `business/domain/progression`; apoio em `app/api/v1/quests` e `persistence/quests`. | CRUD e conclusão de quests; XP e niveis, idempotência; coordenar crédito Gold com Squad 4. |
 | **Squad 3** | Guildas e Social | **2 — Negócio** | `business/application/social`, `business/domain/social`; apoio em `app/api/v1/guilds` e `persistence/social`. | Guildas, convites, membros, administração, feed, comentários/reações, permissões sociais; dados de composição para rankings. |
-| **Squad 4** | Marketplace e Recompensas | **2 — Negócio** | `business/application/rewards`, `business/domain/economy`, com apoio crítico de `persistence/rewards`. | Catálogo, Gold, carteira/ledger, estoque e resgates; controle de concorrência, atomicidade e prevenção de saldo negativo. |
+| **Squad 4** | Marketplace e Recompensas | **2 — Negócio** | `business/application/rewards`, `business/domain/rewards`, com apoio crítico de `persistence/repositories/rewards` e `database/migrations/004_rewards.sql`. | Catálogo fixo de recompensas, Gold, carteira e extrato (ledger), inventário de itens, efeitos ativos e resgates; limites semanais e regras de acúmulo; controle de concorrência, atomicidade e prevenção de saldo negativo. |
 | **Squad 6** | Leaderboard e Analytics | **3 — Persistência** | `persistence/analytics/queries`, `persistence/analytics/repositories`, com apoio em `business/application/analytics` e telas/rotas próprias. | Rankings individuais, por guilda e turma; consultas SQL, agregações, dashboards e exportação CSV; tuning de índices e paginação. |
 
 **Interpretação do foco:** a camada de foco identifica a especialidade principal, **não** limita o Squad a modificar apenas uma camada. Cada um entrega seu fluxo vertical completo (UI + endpoint + service + repository + migração). A equipe **não** cria Squads 5, 7 ou 8 para absorver notificações, front-end ou DevOps.
@@ -118,7 +118,7 @@ A opção torna mais simples assegurar, em uma mesma transação SQL, a conclus�
 
 **Squad 3 — Domínio social.** Mantém `createGuild()`, `joinGuild()`, `manageMembership()` e operações de feed. Regula papéis e vínculos, valida autorizações sociais e fornece consultas estáveis de membros e guildas para ranking. Não manipula XP, Gold ou ranking como fontes de verdade.
 
-**Squad 4 — Economia transacional.** Mantém `creditGoldForQuest()`, `redeemReward()` e políticas de preço/estoque. É o único Squad autorizado a alterar saldo e lançamentos de Gold. Impõe transações ACID, idempotência e controle concorrente com locks/updates condicionais e constraints; implementa testes de resgate simultâneo.
+**Squad 4 — Economia transacional e recompensas.** Mantém `creditGoldForQuest()`, `redeemReward()`, `getActiveEffects()` e `consumeItem()`, além das políticas de preço, limite semanal e acúmulo de recompensas. O catálogo é **fixo na versão beta** (carregado por seed, sem cadastro de recompensas). É o **único** Squad autorizado a alterar saldo, lançamentos de Gold, inventário de itens e efeitos ativos. O valor de Gold de cada quest é definido pelo Squad 2 e recebido como parâmetro (`amount`); o Squad 4 não calcula Gold de quest, e define apenas os preços das recompensas a partir desses valores. Impõe transações ACID, idempotência e controle concorrente com locks/updates condicionais e constraints; mantém o histórico de transações (extrato de Gold e lista de resgates) e implementa testes de resgate simultâneo.
 
 **Squad 6 — Leitura analítica.** Mantém consultas filtradas e paginadas, ranking e desempate determinístico, sumários de XP/Gold e exportação CSV. Usa **leitura autorizada** das tabelas originárias, sem alterar seus dados. Mudanças de índice nas tabelas de outro domínio são revisadas com o Squad proprietário. Evita cache que exiba posição obsoleta após commit, a menos que haja requisito de atualização explícito.
 
@@ -129,7 +129,8 @@ A opção torna mais simples assegurar, em uma mesma transação SQL, a conclus�
 | `users`, perfis, sessão e papéis | **Squad 1** | Todos usam `requireUser()` e políticas públicas; sem implementar autenticação em paralelo. |
 | `quests`, `quest_completions`, XP/níveis | **Squad 2** | Squad 4 recebe pedido de crédito por **Service**; Squad 6 consulta dados consolidados. |
 | `guilds`, `guild_memberships`, feed | **Squad 3** | Squad 6 usa leituras de membros; alterações exigem revisão do Squad 3. |
-| `wallets`, `gold_ledger`, rewards, redemptions, stock | **Squad 4** | Squad 2 invoca `creditGoldForQuest()`; Squad 6 apenas consulta leituras permitidas. |
+| `wallets`, `gold_ledger`, `rewards`, `item_types`, `redemptions`, `user_items`, `user_active_effects` | **Squad 4** | Squad 2 invoca `creditGoldForQuest()`, consulta `getActiveEffects()` e chama `consumeItem()` no uso de Prorrogação de prazo; o módulo de sequência chama `consumeItem()` para proteções. Nenhum outro Squad escreve nessas tabelas; Squad 6 apenas consulta leituras permitidas. |
+| Sequência de atividades (tabela e regras de sequência) | **Squad 6** | Squad 4 chama `canRecoverStreak()` e `restoreStreak()` no resgate de Recuperar sequência; a conclusão de quest precisa registrar a atividade na sequência. |
 | Queries de ranking, dashboard e exportação | **Squad 6** | Todos podem exibir seus resultados; sem update sobre tabelas de origem. |
 | Interface Next.js (`page.jsx`, componentes) | **Cada Squad em seu domínio** | Padrões de layout, acessibilidade e estilos acordados pelos cinco. |
 | `package.json`, CI, banco local, deploy, documentação | **Cinco Squads conjuntamente** | Responsável rotativo por sprint; revisões por propriedade do domínio; nenhuma nova equipe. |
@@ -139,8 +140,8 @@ A opção torna mais simples assegurar, em uma mesma transação SQL, a conclus�
 ### 5.1. Conclusão de quest, XP e Gold
 
 1. **Apresentação:** o usuário envia `POST /api/v1/quests/{id}/complete`; `route.js` obtém identidade, valida payload e chave de idempotência.
-2. **Negócio — Squad 2:** `completeQuest()` verifica autorização, regras e se a conclusão já existe; calcula XP e possíveis níveis.
-3. **Negócio — Squad 4:** o caso de uso chama `creditGoldForQuest(conclusionId, userId, amount, tx)` com identificador único da origem.
+2. **Negócio — Squad 2:** `completeQuest()` verifica autorização, regras e se a conclusão já existe; calcula XP aplicando o multiplicador quando `getActiveEffects(userId, tx)` (Squad 4) retornar XP em dobro ativo,  e possíveis níveis.
+3. **Negócio — Squad 4:** o caso de uso chama `creditGoldForQuest(conclusionId, userId, amount, tx)` com identificador único da origem. O Squad 4 grava o lançamento CREDIT no `gold_ledger` e atualiza `wallets` usando o mesmo `tx`.
 4. **Persistência:** repositórios dos dois Squads compartilham **o mesmo client transacional PostgreSQL**, sem abrir transação independente no módulo de Gold.
 5. **Dados:** constraints de unicidade e `COMMIT` impedem conclusão/crédito duplicado; uma falha faz `ROLLBACK` de XP e Gold.
 6. **Leitura analítica — Squad 6:** rankings consultam o estado já confirmado, conforme políticas de autorização e atualização.
@@ -149,10 +150,25 @@ A opção torna mais simples assegurar, em uma mesma transação SQL, a conclus�
 
 ### 5.2. Resgate de recompensa
 
-1. `POST /api/v1/rewards/{id}/redeem` valida usuário e idempotência.
-2. `redeemReward()` verifica autorização, preço, saldo e estoque, e aplica bloqueio/atualização condicional apropriado.
-3. Na **mesma transação**, debita Gold, registra ledger, reduz estoque e cria `redemption`.
-4. Resgates concorrentes não podem gerar estoque negativo nem débito duplicado; falhas resultam em rollback.
+1. `POST /api/v1/rewards/{id}/redeem` valida a sessão e a chave de idempotência. Se já existir resgate com a mesma chave para o aluno, retorna o resultado do resgate original, sem novo débito.
+2. `redeemReward()` bloqueia a carteira do aluno (`SELECT ... FOR UPDATE`) e verifica: recompensa ativa no catálogo, saldo suficiente, limite semanal (contagem em `redemptions`) e regras de acúmulo (XP em dobro já ativo; total de proteções acima de 3; para Recuperar sequência, `canRecoverStreak()` do módulo de sequência).
+3. Na **mesma transação**, debita `wallets`, registra o lançamento DEBIT no `gold_ledger`, cria `redemptions` e ativa o benefício conforme o tipo da recompensa:
+   - **Item guardado:** soma a quantidade em `user_items` (Pacote de proteção soma 3).
+   - **Efeito com duração:** cria linha em `user_active_effects` com expiração em 24 horas.
+   - **Imediato (Recuperar sequência):** chama `restoreStreak()`; não vai ao inventário.
+4. Qualquer falha ou regra violada resulta em `ROLLBACK` ou recusa antes do débito: saldo, inventário e histórico permanecem como estavam.
+5. Resgates concorrentes do mesmo aluno são serializados pelo bloqueio da carteira; o saldo não fica negativo (`CHECK`) e não há débito duplicado (chave de idempotência única).
+
+#### 5.2.1. Uso de itens guardados
+ 
+**Prorrogação de prazo:**
+ 
+1. Na loja ("Seus itens"), o aluno clica em **Usar** na Prorrogação de prazo.
+2. Um pop-up lista as quests abertas do aluno (dados do `GET /quests`, Squad 2) e o aluno escolhe qual prorrogar.
+3. O front chama `POST /api/v1/quests/{id}/extend-deadline` (Squad 2), que valida a quest, chama `consumeItem(userId, 'PRORROGACAO_PRAZO', 1, tx)` e soma 24 horas ao prazo no próprio registro da quest, na mesma transação.
+4. Se não houver o item no inventário, nada é consumido e o prazo não muda.
+   
+**Proteção de sequência:** quando o módulo de sequência detecta dias sem atividade, chama `consumeItem(userId, 'PROTECAO_SEQUENCIA', diasPerdidos, tx)`. Se o aluno tiver unidades suficientes para todos os dias perdidos, a sequência é mantida; caso contrário, nada é consumido e a sequência reinicia.
 
 ### 5.3. Ranking e dashboard
 
@@ -167,7 +183,7 @@ A opção torna mais simples assegurar, em uma mesma transação SQL, a conclus�
 | Squad 1 | `POST /auth/register`, `POST /auth/login`, `POST /auth/logout`, `GET /users/me` | Sessão segura; rate limiting de login; erros sem exposição de credenciais. |
 | Squad 2 | `GET /quests`, `POST /quests`, `POST /quests/{id}/complete` | Autorização; validação; idempotência; retorno de XP/progresso. |
 | Squad 3 | `GET /guilds`, `POST /guilds`, `POST /guilds/{id}/members` | Ownership e papéis em guildas; validação de vínculo. |
-| Squad 4 | `GET /rewards`, `GET /wallet`, `POST /rewards/{id}/redeem` | Transação, saldo, estoque e idempotência. |
+| Squad 4 | `GET /rewards`, `GET /wallet`, `GET /wallet/ledger`, `GET /inventory`, `GET /redemptions`, `POST /rewards/{id}/redeem` | Sessão; transação, saldo, limites semanais e de acúmulo, idempotência; extrato paginado. |
 | Squad 6 | `GET /leaderboards`, `GET /analytics/summary`, `GET /reports/export` | Filtros, paginação, permissão, limite de exportação. |
 
 Os endpoints são **contratos propostos**, não rotas existentes no ZIP. Especificação OpenAPI e exemplos JSON devem ser registrados por domínio, sem desviar da arquitetura em camadas.
@@ -227,7 +243,11 @@ questify/
 │   │       ├── rewards/
 │   │       │   ├── route.js              # Squad 4
 │   │       │   └── [id]/redeem/route.js
-│   │       ├── wallet/route.js
+│   │       ├── wallet/
+│   │       │   ├── route.js              # Squad 4
+│   │       │   └── ledger/route.js       # Squad 4: extrato de Gold
+│   │       ├── inventory/route.js        # Squad 4: itens e efeitos ativos
+│   │       ├── redemptions/route.js      # Squad 4: histórico de resgates
 │   │       ├── leaderboards/route.js      # Squad 6
 │   │       ├── analytics/summary/route.js
 │   │       └── reports/export/route.js
@@ -237,7 +257,7 @@ questify/
 │   │   │   ├── auth/                      # Squad 1
 │   │   │   ├── quests/                    # Squad 2
 │   │   │   ├── social/                    # Squad 3
-│   │   │   ├── rewards/                   # Squad 4
+│   │   │   ├── rewards/                   # Squad 4: loja, "Seus itens", pop-up de prorrogação
 │   │   │   └── analytics/                 # Squad 6
 │   │   ├── security/
 │   │   │   ├── session.js                 # Squad 1; código server-only
@@ -253,8 +273,10 @@ questify/
 │   │   │   │   ├── guild.service.js       # Squad 3
 │   │   │   │   └── membership.service.js
 │   │   │   ├── rewards/
-│   │   │   │   ├── wallet.service.js      # Squad 4
-│   │   │   │   └── redemption.service.js
+│   │   │   │   ├── wallet.service.js      # Squad 4: creditGoldForQuest, saldo e extrato
+│   │   │   │   ├── redemption.service.js  # redeemReward, histórico de resgates
+│   │   │   │   ├── inventory.service.js   # consumeItem, inventário
+│   │   │   │   └── reward-effect.service.js # getActiveEffects, ativação de efeitos
 │   │   │   └── analytics/
 │   │   │       ├── leaderboard.service.js # Squad 6
 │   │   │       └── report.service.js
@@ -262,7 +284,7 @@ questify/
 │   │       ├── auth/user-policy.js
 │   │       ├── quests/{xp-policy,level-policy}.js
 │   │       ├── social/guild-policy.js
-│   │       ├── rewards/{gold-policy,reward-policy}.js
+│   │       ├── rewards/{gold-policy,reward-policy,reward-effect-policy}.js
 │   │       └── analytics/ranking-policy.js
 │   ├── persistence/                      # CAMADA 3 — PERSISTÊNCIA
 │   │   ├── postgres/
@@ -273,8 +295,12 @@ questify/
 │   │   │   ├── quests/quests.repository.js
 │   │   │   ├── quests/progress.repository.js
 │   │   │   ├── social/guilds.repository.js
-│   │   │   ├── rewards/wallets.repository.js
+│   │   │   ├── rewards/wallets.repository.js        # Squad 4
+│   │   │   ├── rewards/gold-ledger.repository.js
+│   │   │   ├── rewards/rewards.repository.js
 │   │   │   ├── rewards/redemptions.repository.js
+│   │   │   ├── rewards/user-items.repository.js
+│   │   │   ├── rewards/active-effects.repository.js
 │   │   │   └── analytics/leaderboard.repository.js
 │   │   └── analytics/queries/
 │   │       ├── individual-ranking.sql
@@ -298,16 +324,17 @@ questify/
     └── e2e/
 ```
 
-**Observações da árvore:** a notação `{a,b}` abrevia **arquivos distintos** (`xp-policy.js`, `level-policy.js` etc.), não nomes literais de diretórios. `database/` representa scripts do PostgreSQL; o servidor de banco opera fora do diretório do aplicativo. `.env.example` nunca contém segredos reais. A estrutura exata pode ser enxugada no MVP sem violar a direção das dependências.
+**Observações da árvore:** a notação `{a,b}` abrevia **arquivos distintos** (`xp-policy.js`, `level-policy.js` etc.), não nomes literais de diretórios. `database/` representa scripts do PostgreSQL; o servidor de banco opera fora do diretório do aplicativo. `.env.example` nunca contém segredos reais. A estrutura exata pode ser enxugada no MVP sem violar a direção das dependências. O catálogo fixo de recompensas é carregado pela própria migration `004_rewards.sql` (vale para todos os ambientes); `seeds/dev.sql` fica restrito a dados de desenvolvimento.
+
 
 ## 7. Plano de implementação por sprint
 
 | Marco | Ações dos cinco Squads | Critério verificável |
 |---|---|---|
 | **Sprint 0 — Fundação** | Aprovar alteração de stack/arquitetura; atualizar README; iniciar Next.js JavaScript e PostgreSQL; definir convenções de camadas, migrations, contratos HTTP e CI. | `npm install`, `npm run dev`, conexão de teste e pipeline inicial operantes. |
-| **Sprint 1 — Fatias mínimas** | Squad 1: login/sessão; Squad 2: quests; Squad 3: guildas; Squad 4: catálogo/carteira; Squad 6: ranking simples. Todos entregam tela, rota, Service e Repository. | Cinco fluxos básicos executam em uma única aplicação e têm testes. |
+| **Sprint 1 — Fatias mínimas** | Squad 1: login/sessão; Squad 2: quests; Squad 3: guildas;Squad 4: catálogo fixo e carteira; Squad 6: ranking simples. Todos entregam tela, rota, Service e Repository. | Cinco fluxos básicos executam em uma única aplicação e têm testes. |
 | **Sprint 2 — Regras centrais** | XP/níveis, gestão de guildas, ledger/Gold, permissões e queries paginadas. | Regras unitárias e constraints críticas verificadas. |
-| **Sprint 3 — Integração** | Quest concluída → XP → crédito de Gold → ranking; resgate simultâneo com estoque. | Testes ponta a ponta, transação compartilhada, idempotência e rollback. |
+| **Sprint 3 — Integração** | Quest concluída → XP → crédito de Gold → ranking;resgate simultâneo (saldo e limites), ativação de efeitos e uso de itens guardados. | Testes ponta a ponta, transação compartilhada, idempotência e rollback. |
 | **Sprint 4 — Segurança e qualidade** | Revisar autorização em Server Components/rotas, CSRF, erros, validação, testes de integração e UX. | Pipelines bloqueiam regressões; endpoints privados protegidos. |
 | **Sprint 5 — Desempenho e operação** | Medir p95 do ranking, índices, pool PostgreSQL, renderização e latência; logs e execução em produção Node.js. | Resultados de carga documentados; comportamento de cache explicitado. |
 | **Sprints finais — Entrega** | Revisar acessibilidade, README, OpenAPI, manual de deploy e demonstração dos cinco módulos. | Implantação reproduzível e funcionalidades demonstradas. |
@@ -340,6 +367,7 @@ questify/
 | Mistura de código de servidor com Client Components | Vazamento de segredos, dependências inválidas e risco de segurança. | Módulos server-only, lint e revisão obrigatória das fronteiras. |
 | Rota HTTP chamando diretamente SQL | Regras dispersas, baixa testabilidade e acoplamento. | Rota → Service → Repository; testes de arquitetura. |
 | XP e Gold alterados em transações diferentes | Créditos inconsistentes após falhas parciais. | Um client PostgreSQL e uma transação por caso de uso. |
+| Recompensas de sequência sem dono definido para a sequência | Proteção e Recuperar sequência ficam inoperantes ou implementadas de forma divergente. | Confirmar o dono da sequência e registrar as funções `canRecoverStreak()`, `restoreStreak()` e `consumeItem()`. |
 | Banco único e aplicação única | Escala independente entre domínios indisponível. | Medição de carga, índices, pool, consultas eficientes e réplicas sem estado. |
 | Analytics com caching indevido | Rankings defasados após conclusão/resgate. | Políticas explícitas de cache e revalidação; consultas à fonte confirmada. |
 | Funcionalidades de squads não selecionados | Notificações/infra específica podem faltar em relação ao roadmap original. | Documentar adiamentos e responsabilidades transversais dos cinco. |
