@@ -11,7 +11,7 @@
 
 ## 1. Resumo executivo e contexto do negócio
 
-O Questify gamifica produtividade acadêmica com **quests e tarefas**, **XP e níveis**, **badges**, **guildas e interações sociais**, uma **moeda virtual (Gold)**, **recompensas resgatáveis**, **rankings**, **dashboards** e **relatórios**. O objetivo técnico é entregar essas capacidades com fronteiras de responsabilidade claras, segurança, consistência de dados, evolução incremental e operação acessível aos cinco Squads.
+O Questify gamifica produtividade acadêmica com **quests e tarefas**, **XP e níveis**, **guildas e interações sociais**, uma **moeda virtual (Gold)**, **recompensas resgatáveis**, **rankings**, **dashboards** e **relatórios**. O objetivo técnico é entregar essas capacidades com fronteiras de responsabilidade claras, segurança, consistência de dados, evolução incremental e operação acessível aos cinco Squads.
 
 **Decisão arquitetural:** uma **única aplicação Next.js** usando App Router para páginas, componentes de interface e Route Handlers HTTP; **Node.js** é o ambiente de execução do servidor Next.js, **não** um segundo backend obrigatório. Serviços JavaScript concentram os casos de uso e as regras; repositórios executam SQL parametrizado; **PostgreSQL** é a fonte persistente de verdade. **Não** se acrescentam Express, NestJS, microserviços, gateway dedicado, filas, Clean Architecture, Hexagonal ou eventos distribuídos como parte da solução.
 
@@ -103,7 +103,7 @@ A opção torna mais simples assegurar, em uma mesma transação SQL, a conclus�
 | Squad | Domínio | **Camada de foco** | **Subcamadas de foco** | Responsabilidades principais |
 |---|---|---|---|---|
 | **Squad 1** | Identidade e Acesso | **1 — Apresentação** | `app/api/v1/auth`, páginas de login/cadastro, `presentation/security`, DTOs/validação; apoio em `business/auth`, `persistence/auth`. | Cadastro, login, logout, sessão/JWT, perfis, papéis e regras de acesso; convenções de autenticação para os demais Squads. |
-| **Squad 2** | Quests e Gamificação | **2 — Negócio** | `business/application/quests`, `business/domain/quests`, `business/domain/progression`; apoio em `app/api/v1/quests` e `persistence/quests`. | CRUD e conclusão de quests; XP, níveis e badges; idempotência; coordenar crédito Gold com Squad 4. |
+| **Squad 2** | Quests e Gamificação | **2 — Negócio** | `business/application/quests`, `business/domain/quests`, `business/domain/progression`; apoio em `app/api/v1/quests` e `persistence/quests`. | CRUD e conclusão de quests; XP e niveis, idempotência; coordenar crédito Gold com Squad 4. |
 | **Squad 3** | Guildas e Social | **2 — Negócio** | `business/application/social`, `business/domain/social`; apoio em `app/api/v1/guilds` e `persistence/social`. | Guildas, convites, membros, administração, feed, comentários/reações, permissões sociais; dados de composição para rankings. |
 | **Squad 4** | Marketplace e Recompensas | **2 — Negócio** | `business/application/rewards`, `business/domain/economy`, com apoio crítico de `persistence/rewards`. | Catálogo, Gold, carteira/ledger, estoque e resgates; controle de concorrência, atomicidade e prevenção de saldo negativo. |
 | **Squad 6** | Leaderboard e Analytics | **3 — Persistência** | `persistence/analytics/queries`, `persistence/analytics/repositories`, com apoio em `business/application/analytics` e telas/rotas próprias. | Rankings individuais, por guilda e turma; consultas SQL, agregações, dashboards e exportação CSV; tuning de índices e paginação. |
@@ -114,7 +114,7 @@ A opção torna mais simples assegurar, em uma mesma transação SQL, a conclus�
 
 **Squad 1 — Apresentação e segurança.** Mantém `app/(public)/login`, `app/(public)/register`, `app/api/v1/auth/**`, componentes de autenticação e guardas de sessão. Define o contrato de identidade (`userId`, papéis, status), a biblioteca de autenticação, testes de rota protegida e exemplos reutilizáveis. Mantém seus Services, repositórios e tabelas de usuário. **Não** centraliza toda a UI: cada Squad implementa as páginas do próprio domínio.
 
-**Squad 2 — Aplicação e regras de progressão.** Mantém `completeQuest()`, `calculateXp()`, `resolveLevel()` e concessão de badges. Define chave única da conclusão e regras de pontuação, validando quem pode concluir e impedindo XP duplicado. Solicita o crédito de Gold à interface de aplicação mantida pelo Squad 4 — sem escrever diretamente no ledger.
+**Squad 2 — Aplicação e regras de progressão.** Mantém `completeQuest()`, `calculateXp()` e `resolveLevel()`. Define chave única da conclusão e regras de pontuação, validando quem pode concluir e impedindo XP duplicado. Solicita o crédito de Gold à interface de aplicação mantida pelo Squad 4 — sem escrever diretamente no ledger.
 
 **Squad 3 — Domínio social.** Mantém `createGuild()`, `joinGuild()`, `manageMembership()` e operações de feed. Regula papéis e vínculos, valida autorizações sociais e fornece consultas estáveis de membros e guildas para ranking. Não manipula XP, Gold ou ranking como fontes de verdade.
 
@@ -127,7 +127,7 @@ A opção torna mais simples assegurar, em uma mesma transação SQL, a conclus�
 | Ativo/contrato | Dono | Dependentes e regras de integração |
 |---|---|---|
 | `users`, perfis, sessão e papéis | **Squad 1** | Todos usam `requireUser()` e políticas públicas; sem implementar autenticação em paralelo. |
-| `quests`, `quest_completions`, XP/níveis/badges | **Squad 2** | Squad 4 recebe pedido de crédito por **Service**; Squad 6 consulta dados consolidados. |
+| `quests`, `quest_completions`, XP/níveis | **Squad 2** | Squad 4 recebe pedido de crédito por **Service**; Squad 6 consulta dados consolidados. |
 | `guilds`, `guild_memberships`, feed | **Squad 3** | Squad 6 usa leituras de membros; alterações exigem revisão do Squad 3. |
 | `wallets`, `gold_ledger`, rewards, redemptions, stock | **Squad 4** | Squad 2 invoca `creditGoldForQuest()`; Squad 6 apenas consulta leituras permitidas. |
 | Queries de ranking, dashboard e exportação | **Squad 6** | Todos podem exibir seus resultados; sem update sobre tabelas de origem. |
@@ -139,7 +139,7 @@ A opção torna mais simples assegurar, em uma mesma transação SQL, a conclus�
 ### 5.1. Conclusão de quest, XP e Gold
 
 1. **Apresentação:** o usuário envia `POST /api/v1/quests/{id}/complete`; `route.js` obtém identidade, valida payload e chave de idempotência.
-2. **Negócio — Squad 2:** `completeQuest()` verifica autorização, regras e se a conclusão já existe; calcula XP e possíveis níveis/badges.
+2. **Negócio — Squad 2:** `completeQuest()` verifica autorização, regras e se a conclusão já existe; calcula XP e possíveis níveis.
 3. **Negócio — Squad 4:** o caso de uso chama `creditGoldForQuest(conclusionId, userId, amount, tx)` com identificador único da origem.
 4. **Persistência:** repositórios dos dois Squads compartilham **o mesmo client transacional PostgreSQL**, sem abrir transação independente no módulo de Gold.
 5. **Dados:** constraints de unicidade e `COMMIT` impedem conclusão/crédito duplicado; uma falha faz `ROLLBACK` de XP e Gold.
