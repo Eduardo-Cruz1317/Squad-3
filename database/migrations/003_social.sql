@@ -5,9 +5,9 @@
 -- Pré-requisito: public.users (migration de autenticação do fork:
 -- supabase/migrations/20261029000000_create_auth_tables.sql).
 --
--- Arquivo versionado em database/migrations. Para aplicar: SQL Editor do Supabase, ou copiar este arquivo para
--- supabase/migrations/20261111000000_create_social_tables.sql e rodar
--- `supabase db push` (o CLI só lê a pasta supabase/migrations).
+-- Fonte original em database/migrations; espelhado em
+-- supabase/migrations/20261111000000_create_social_tables.sql para o CLI
+-- aplicar com `supabase db push`.
 --
 -- ESCOPO DESTA CAMADA: apenas integridade estrutural (PK, FK, NOT NULL,
 -- UNIQUE e domínio de valores de coluna). NENHUMA regra de negócio mora aqui:
@@ -63,19 +63,6 @@ CREATE TABLE IF NOT EXISTS public.guild_memberships (
 );
 
 CREATE INDEX IF NOT EXISTS guild_memberships_user_id_idx ON public.guild_memberships (user_id);
-
--- Dados de referência (idempotente). Sem categorias ninguém consegue criar guilda.
--- Rode no SQL Editor do Supabase (ou use como database/seeds/dev.sql).
-INSERT INTO public.categories (name) VALUES
-  ('Matemática'),
-  ('Física'),
-  ('Química'),
-  ('Biologia'),
-  ('Programação'),
-  ('Línguas'),
-  ('Humanas'),
-  ('Outros')
-ON CONFLICT (name) DO NOTHING;
 
 -- Segurança do Supabase (mesmo padrão da migration de autenticação do fork).
 -- A aplicação acessa o banco pela connection string do pooler (role privilegiada),
