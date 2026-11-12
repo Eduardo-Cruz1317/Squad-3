@@ -1,0 +1,51 @@
+classDiagram
+  direction LR
+  namespace Squad1 {
+    class Usuario
+    class Sessao
+    class Turma
+  }
+  namespace Squad2 {
+    class Quest
+    class ConclusaoQuest
+    class ProgressoUsuario
+  }
+  namespace Squad3 {
+    class Guilda
+    class VinculoGuilda
+    class Publicacao
+    class Comentario
+  }
+  namespace Squad4 {
+    class Carteira
+    class LancamentoGold
+    class Recompensa
+    class Resgate
+    class ItemUsuario
+    class EfeitoAtivo
+  }
+  namespace Squad6 {
+    class SequenciaAtividade
+    class PosicaoRanking
+    class ResumoProgresso
+  }
+  Usuario "1" --> "0..*" Sessao
+  Turma "1" --> "0..*" Usuario
+  Usuario "1" --> "0..*" Quest
+  Usuario "1" --> "0..1" ProgressoUsuario
+  Quest "1" --> "0..*" ConclusaoQuest
+  Usuario "1" --> "0..*" ConclusaoQuest
+  Guilda "1" --> "0..*" VinculoGuilda
+  Usuario "1" --> "0..*" VinculoGuilda
+  Guilda "1" --> "0..*" Publicacao
+  Publicacao "1" --> "0..*" Comentario
+  Usuario "1" --> "0..1" Carteira
+  Carteira "1" *-- "0..*" LancamentoGold
+  Usuario "1" --> "0..*" Resgate
+  Recompensa "1" --> "0..*" Resgate
+  Usuario "1" --> "0..*" ItemUsuario
+  Usuario "1" --> "0..*" EfeitoAtivo
+  Usuario "1" --> "0..1" SequenciaAtividade
+  ProgressoUsuario ..> PosicaoRanking : derivado de
+  VinculoGuilda ..> PosicaoRanking : derivado de
+  SequenciaAtividade ..> ResumoProgresso : derivado de

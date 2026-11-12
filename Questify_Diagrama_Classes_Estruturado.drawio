@@ -1,0 +1,530 @@
+<?xml version='1.0' encoding='utf-8'?>
+<mxfile host="app.diagrams.net" agent="Questify UML Designer" version="24.7.17" type="device">
+  <diagram id="01_Panorama" name="01  Visão geral do modelo">
+    <mxGraphModel dx="1400" dy="800" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1927" pageHeight="1177" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="hdr2" value="QUESTIFY   /   UML   /   01  Visão geral do modelo" style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=middle;fontSize=27;fontStyle=1;fontColor=#142B45;fontFamily=Arial;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="54" y="20" width="1819" height="42" as="geometry" />
+        </mxCell>
+        <mxCell id="hdr3" value="Classes nucleares por Squad · relações essenciais" style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=middle;fontSize=15;fontStyle=0;fontColor=#59708A;fontFamily=Arial;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="54" y="63" width="1819" height="27" as="geometry" />
+        </mxCell>
+        <mxCell id="User" value="&lt;div style=&quot;padding:3px 2px;&quot;&gt;&lt;div style=&quot;text-align:center;color:#6A7B8E;font-size:11px;&quot;&gt;«entity»&lt;/div&gt;&lt;div style=&quot;text-align:center;font-size:16px;font-weight:bold;color:#18293E;&quot;&gt;Usuário&lt;/div&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#C6D1DD;fontSize=13;fontFamily=Arial;align=center;verticalAlign=top;spacingTop=2;shadow=0;" vertex="1" parent="1">
+          <mxGeometry x="567.3" y="378.0" width="308.6" height="55.0" as="geometry" />
+        </mxCell>
+        <mxCell id="Classroom" value="&lt;div style=&quot;padding:3px 2px;&quot;&gt;&lt;div style=&quot;text-align:center;color:#6A7B8E;font-size:11px;&quot;&gt;«entity»&lt;/div&gt;&lt;div style=&quot;text-align:center;font-size:16px;font-weight:bold;color:#18293E;&quot;&gt;Turma&lt;/div&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#C6D1DD;fontSize=13;fontFamily=Arial;align=center;verticalAlign=top;spacingTop=2;shadow=0;" vertex="1" parent="1">
+          <mxGeometry x="78.4" y="378.0" width="308.6" height="55.0" as="geometry" />
+        </mxCell>
+        <mxCell id="Quest" value="&lt;div style=&quot;padding:3px 2px;&quot;&gt;&lt;div style=&quot;text-align:center;color:#6A7B8E;font-size:11px;&quot;&gt;«entity»&lt;/div&gt;&lt;div style=&quot;text-align:center;font-size:16px;font-weight:bold;color:#18293E;&quot;&gt;Quest&lt;/div&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#C6D1DD;fontSize=13;fontFamily=Arial;align=center;verticalAlign=top;spacingTop=2;shadow=0;" vertex="1" parent="1">
+          <mxGeometry x="1068.4" y="161.1" width="308.6" height="55.0" as="geometry" />
+        </mxCell>
+        <mxCell id="QuestCompletion" value="&lt;div style=&quot;padding:3px 2px;&quot;&gt;&lt;div style=&quot;text-align:center;color:#6A7B8E;font-size:11px;&quot;&gt;«entity»&lt;/div&gt;&lt;div style=&quot;text-align:center;font-size:16px;font-weight:bold;color:#18293E;&quot;&gt;ConclusãoQuest&lt;/div&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#C6D1DD;fontSize=13;fontFamily=Arial;align=center;verticalAlign=top;spacingTop=2;shadow=0;" vertex="1" parent="1">
+          <mxGeometry x="1540.6" y="161.1" width="308.6" height="55.0" as="geometry" />
+        </mxCell>
+        <mxCell id="Progress" value="&lt;div style=&quot;padding:3px 2px;&quot;&gt;&lt;div style=&quot;text-align:center;color:#6A7B8E;font-size:11px;&quot;&gt;«entity»&lt;/div&gt;&lt;div style=&quot;text-align:center;font-size:16px;font-weight:bold;color:#18293E;&quot;&gt;ProgressoUsuário&lt;/div&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#C6D1DD;fontSize=13;fontFamily=Arial;align=center;verticalAlign=top;spacingTop=2;shadow=0;" vertex="1" parent="1">
+          <mxGeometry x="1068.4" y="261.9" width="308.6" height="55.0" as="geometry" />
+        </mxCell>
+        <mxCell id="Guild" value="&lt;div style=&quot;padding:3px 2px;&quot;&gt;&lt;div style=&quot;text-align:center;color:#6A7B8E;font-size:11px;&quot;&gt;«entity»&lt;/div&gt;&lt;div style=&quot;text-align:center;font-size:16px;font-weight:bold;color:#18293E;&quot;&gt;Guilda&lt;/div&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#C6D1DD;fontSize=13;fontFamily=Arial;align=center;verticalAlign=top;spacingTop=2;shadow=0;" vertex="1" parent="1">
+          <mxGeometry x="567.3" y="804.2" width="308.6" height="55.0" as="geometry" />
+        </mxCell>
+        <mxCell id="Membership" value="&lt;div style=&quot;padding:3px 2px;&quot;&gt;&lt;div style=&quot;text-align:center;color:#6A7B8E;font-size:11px;&quot;&gt;«entity»&lt;/div&gt;&lt;div style=&quot;text-align:center;font-size:16px;font-weight:bold;color:#18293E;&quot;&gt;VínculoGuilda&lt;/div&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#C6D1DD;fontSize=13;fontFamily=Arial;align=center;verticalAlign=top;spacingTop=2;shadow=0;" vertex="1" parent="1">
+          <mxGeometry x="1068.4" y="804.2" width="308.6" height="55.0" as="geometry" />
+        </mxCell>
+        <mxCell id="Wallet" value="&lt;div style=&quot;padding:3px 2px;&quot;&gt;&lt;div style=&quot;text-align:center;color:#6A7B8E;font-size:11px;&quot;&gt;«entity»&lt;/div&gt;&lt;div style=&quot;text-align:center;font-size:16px;font-weight:bold;color:#18293E;&quot;&gt;Carteira&lt;/div&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#C6D1DD;fontSize=13;fontFamily=Arial;align=center;verticalAlign=top;spacingTop=2;shadow=0;" vertex="1" parent="1">
+          <mxGeometry x="1068.4" y="1024.3" width="308.6" height="55.0" as="geometry" />
+        </mxCell>
+        <mxCell id="Ledger" value="&lt;div style=&quot;padding:3px 2px;&quot;&gt;&lt;div style=&quot;text-align:center;color:#6A7B8E;font-size:11px;&quot;&gt;«entity»&lt;/div&gt;&lt;div style=&quot;text-align:center;font-size:16px;font-weight:bold;color:#18293E;&quot;&gt;LançamentoGold&lt;/div&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#C6D1DD;fontSize=13;fontFamily=Arial;align=center;verticalAlign=top;spacingTop=2;shadow=0;" vertex="1" parent="1">
+          <mxGeometry x="1540.6" y="1024.3" width="308.6" height="55.0" as="geometry" />
+        </mxCell>
+        <mxCell id="Reward" value="&lt;div style=&quot;padding:3px 2px;&quot;&gt;&lt;div style=&quot;text-align:center;color:#6A7B8E;font-size:11px;&quot;&gt;«entity»&lt;/div&gt;&lt;div style=&quot;text-align:center;font-size:16px;font-weight:bold;color:#18293E;&quot;&gt;Recompensa&lt;/div&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#C6D1DD;fontSize=13;fontFamily=Arial;align=center;verticalAlign=top;spacingTop=2;shadow=0;" vertex="1" parent="1">
+          <mxGeometry x="78.4" y="1024.3" width="308.6" height="55.0" as="geometry" />
+        </mxCell>
+        <mxCell id="Redemption" value="&lt;div style=&quot;padding:3px 2px;&quot;&gt;&lt;div style=&quot;text-align:center;color:#6A7B8E;font-size:11px;&quot;&gt;«entity»&lt;/div&gt;&lt;div style=&quot;text-align:center;font-size:16px;font-weight:bold;color:#18293E;&quot;&gt;Resgate&lt;/div&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#C6D1DD;fontSize=13;fontFamily=Arial;align=center;verticalAlign=top;spacingTop=2;shadow=0;" vertex="1" parent="1">
+          <mxGeometry x="567.3" y="1024.3" width="308.6" height="55.0" as="geometry" />
+        </mxCell>
+        <mxCell id="Streak" value="&lt;div style=&quot;padding:3px 2px;&quot;&gt;&lt;div style=&quot;text-align:center;color:#6A7B8E;font-size:11px;&quot;&gt;«entity»&lt;/div&gt;&lt;div style=&quot;text-align:center;font-size:16px;font-weight:bold;color:#18293E;&quot;&gt;SequênciaAtividade&lt;/div&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#C6D1DD;fontSize=13;fontFamily=Arial;align=center;verticalAlign=top;spacingTop=2;shadow=0;" vertex="1" parent="1">
+          <mxGeometry x="1068.4" y="578.1" width="308.6" height="55.0" as="geometry" />
+        </mxCell>
+        <mxCell id="RankingPosition" value="&lt;div style=&quot;padding:3px 2px;&quot;&gt;&lt;div style=&quot;text-align:center;color:#6753A9;font-size:11px;&quot;&gt;«readModel»&lt;/div&gt;&lt;div style=&quot;text-align:center;font-size:16px;font-weight:bold;color:#18293E;&quot;&gt;PosiçãoRanking&lt;/div&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#C6BBF2;fontSize=13;fontFamily=Arial;align=center;verticalAlign=top;spacingTop=2;shadow=0;" vertex="1" parent="1">
+          <mxGeometry x="78.4" y="578.1" width="308.6" height="55.0" as="geometry" />
+        </mxCell>
+        <mxCell id="Summary" value="&lt;div style=&quot;padding:3px 2px;&quot;&gt;&lt;div style=&quot;text-align:center;color:#6753A9;font-size:11px;&quot;&gt;«readModel»&lt;/div&gt;&lt;div style=&quot;text-align:center;font-size:16px;font-weight:bold;color:#18293E;&quot;&gt;ResumoProgresso&lt;/div&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#C6BBF2;fontSize=13;fontFamily=Arial;align=center;verticalAlign=top;spacingTop=2;shadow=0;" vertex="1" parent="1">
+          <mxGeometry x="78.4" y="679.0" width="308.6" height="55.0" as="geometry" />
+        </mxCell>
+        <mxCell id="edge_0" value="1 — 0..* · matrícula" style="edgeStyle=none;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#6B8198;strokeWidth=1.4;fontFamily=Arial;fontSize=10;fontColor=#51647A;startArrow=none;endArrow=none;" edge="1" parent="1" source="Classroom" target="User">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge_1" value="1 — 0..* · possui" style="edgeStyle=none;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#6B8198;strokeWidth=1.4;fontFamily=Arial;fontSize=10;fontColor=#51647A;startArrow=none;endArrow=none;" edge="1" parent="1" source="User" target="Quest">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge_2" value="1 — 0..* · gera" style="edgeStyle=none;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#6B8198;strokeWidth=1.4;fontFamily=Arial;fontSize=10;fontColor=#51647A;startArrow=none;endArrow=none;" edge="1" parent="1" source="Quest" target="QuestCompletion">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge_3" value="1 — 0..1 · evolui" style="edgeStyle=none;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#6B8198;strokeWidth=1.4;fontFamily=Arial;fontSize=10;fontColor=#51647A;startArrow=none;endArrow=none;" edge="1" parent="1" source="User" target="Progress">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge_4" value="1 — 0..* · integra" style="edgeStyle=none;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#6B8198;strokeWidth=1.4;fontFamily=Arial;fontSize=10;fontColor=#51647A;startArrow=none;endArrow=none;" edge="1" parent="1" source="User" target="Membership">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge_5" value="1 — 0..* · possui" style="edgeStyle=none;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#6B8198;strokeWidth=1.4;fontFamily=Arial;fontSize=10;fontColor=#51647A;startArrow=none;endArrow=none;" edge="1" parent="1" source="Guild" target="Membership">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge_6" value="1 — 0..1 · mantém" style="edgeStyle=none;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#6B8198;strokeWidth=1.4;fontFamily=Arial;fontSize=10;fontColor=#51647A;startArrow=none;endArrow=none;" edge="1" parent="1" source="User" target="Wallet">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge_7" value="1 — 0..* · registra" style="edgeStyle=none;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#6B8198;strokeWidth=1.4;fontFamily=Arial;fontSize=10;fontColor=#51647A;startArrow=none;endArrow=none;" edge="1" parent="1" source="Wallet" target="Ledger">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge_8" value="1 — 0..* · resgatada" style="edgeStyle=none;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#6B8198;strokeWidth=1.4;fontFamily=Arial;fontSize=10;fontColor=#51647A;startArrow=none;endArrow=none;" edge="1" parent="1" source="Reward" target="Redemption">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge_9" value="1 — 0..1 · acompanha" style="edgeStyle=none;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#6B8198;strokeWidth=1.4;fontFamily=Arial;fontSize=10;fontColor=#51647A;startArrow=none;endArrow=none;" edge="1" parent="1" source="User" target="Streak">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge_10" value="consulta" style="edgeStyle=none;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#8B8AAF;strokeWidth=1.4;fontFamily=Arial;fontSize=10;fontColor=#51647A;dashed=1;endArrow=open;endFill=0;" edge="1" parent="1" source="Progress" target="RankingPosition">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge_11" value="consulta" style="edgeStyle=none;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#8B8AAF;strokeWidth=1.4;fontFamily=Arial;fontSize=10;fontColor=#51647A;dashed=1;endArrow=open;endFill=0;" edge="1" parent="1" source="Membership" target="RankingPosition">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge_12" value="consulta" style="edgeStyle=none;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#8B8AAF;strokeWidth=1.4;fontFamily=Arial;fontSize=10;fontColor=#51647A;dashed=1;endArrow=open;endFill=0;" edge="1" parent="1" source="Streak" target="Summary">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="hdr31" value="Visão conceitual: os vínculos completos e as regras transacionais estão nas páginas seguintes." style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=middle;fontSize=12;fontStyle=0;fontColor=#5A6E85;fontFamily=Arial;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="54" y="1119" width="1819" height="36" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram id="02_Identidade_Quests" name="02  Squad 1 + Squad 2">
+    <mxGraphModel dx="1400" dy="800" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="2077" pageHeight="1073" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="hdr2" value="QUESTIFY   /   UML   /   02  Squad 1 + Squad 2" style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=middle;fontSize=27;fontStyle=1;fontColor=#142B45;fontFamily=Arial;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="54" y="20" width="1969" height="42" as="geometry" />
+        </mxCell>
+        <mxCell id="hdr3" value="Identidade, quests, XP e níveis" style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=middle;fontSize=15;fontStyle=0;fontColor=#59708A;fontFamily=Arial;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="54" y="63" width="1969" height="27" as="geometry" />
+        </mxCell>
+        <mxCell id="User" value="&lt;div style=&quot;padding:3px 2px;&quot;&gt;&lt;div style=&quot;text-align:center;color:#315EAA;font-size:11px;&quot;&gt;«entity»&lt;/div&gt;&lt;div style=&quot;text-align:center;font-size:16px;font-weight:bold;color:#18293E;&quot;&gt;Usuário&lt;/div&gt;&lt;/div&gt;&lt;div style=&quot;border-top:1px solid #BDCEF0;white-space:pre;text-align:left;padding:7px 5px;color:#364860;font-size:12px;&quot;&gt;- id: UUID&#10;- nome: string&#10;- email: string&#10;- senhaHash: string&#10;- papel: PapelUsuario&#10;- status: StatusUsuario&#10;- turmaId?: UUID&lt;/div&gt;&lt;div style=&quot;border-top:1px solid #BDCEF0;white-space:pre;text-align:left;padding:7px 5px;color:#28636B;font-size:11px;&quot;&gt;+ podeAcessar(recurso): boolean&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#BDCEF0;fontSize=13;fontFamily=Arial;align=center;verticalAlign=top;spacingTop=2;shadow=0;" vertex="1" parent="1">
+          <mxGeometry x="593.3" y="161.8" width="342.2" height="230.7" as="geometry" />
+        </mxCell>
+        <mxCell id="Session" value="&lt;div style=&quot;padding:3px 2px;&quot;&gt;&lt;div style=&quot;text-align:center;color:#315EAA;font-size:11px;&quot;&gt;«entity»&lt;/div&gt;&lt;div style=&quot;text-align:center;font-size:16px;font-weight:bold;color:#18293E;&quot;&gt;Sessão&lt;/div&gt;&lt;/div&gt;&lt;div style=&quot;border-top:1px solid #BDCEF0;white-space:pre;text-align:left;padding:7px 5px;color:#364860;font-size:12px;&quot;&gt;- id: UUID&#10;- usuarioId: UUID&#10;- expiraEm: Date&#10;- revogadaEm?: Date&lt;/div&gt;&lt;div style=&quot;border-top:1px solid #BDCEF0;white-space:pre;text-align:left;padding:7px 5px;color:#28636B;font-size:11px;&quot;&gt;+ estaAtiva(): boolean&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#BDCEF0;fontSize=13;fontFamily=Arial;align=center;verticalAlign=top;spacingTop=2;shadow=0;" vertex="1" parent="1">
+          <mxGeometry x="1111.3" y="187.0" width="342.2" height="180.3" as="geometry" />
+        </mxCell>
+        <mxCell id="Classroom" value="&lt;div style=&quot;padding:3px 2px;&quot;&gt;&lt;div style=&quot;text-align:center;color:#315EAA;font-size:11px;&quot;&gt;«entity»&lt;/div&gt;&lt;div style=&quot;text-align:center;font-size:16px;font-weight:bold;color:#18293E;&quot;&gt;Turma&lt;/div&gt;&lt;/div&gt;&lt;div style=&quot;border-top:1px solid #BDCEF0;white-space:pre;text-align:left;padding:7px 5px;color:#364860;font-size:12px;&quot;&gt;- id: UUID&#10;- codigo: string&#10;- nome: string&#10;- ativa: boolean&lt;/div&gt;&lt;div style=&quot;border-top:1px solid #BDCEF0;white-space:pre;text-align:left;padding:7px 5px;color:#28636B;font-size:11px;&quot;&gt;+ listarAlunos(): Usuário[]&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#BDCEF0;fontSize=13;fontFamily=Arial;align=center;verticalAlign=top;spacingTop=2;shadow=0;" vertex="1" parent="1">
+          <mxGeometry x="78.4" y="187.0" width="342.2" height="180.3" as="geometry" />
+        </mxCell>
+        <mxCell id="Quest" value="&lt;div style=&quot;padding:3px 2px;&quot;&gt;&lt;div style=&quot;text-align:center;color:#147A60;font-size:11px;&quot;&gt;«entity»&lt;/div&gt;&lt;div style=&quot;text-align:center;font-size:16px;font-weight:bold;color:#18293E;&quot;&gt;Quest&lt;/div&gt;&lt;/div&gt;&lt;div style=&quot;border-top:1px solid #9BD3BC;white-space:pre;text-align:left;padding:7px 5px;color:#364860;font-size:12px;&quot;&gt;- id: UUID&#10;- usuarioId: UUID&#10;- titulo: string&#10;- descricao?: string&#10;- status: StatusQuest&#10;- xpBase: number&#10;- goldBase: number&#10;- prazo?: Date&lt;/div&gt;&lt;div style=&quot;border-top:1px solid #9BD3BC;white-space:pre;text-align:left;padding:7px 5px;color:#28636B;font-size:11px;&quot;&gt;+ estaAberta(): boolean&#10;+ prorrogarPrazo(24h): void&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#9BD3BC;fontSize=13;fontFamily=Arial;align=center;verticalAlign=top;spacingTop=2;shadow=0;" vertex="1" parent="1">
+          <mxGeometry x="1111.3" y="463.6" width="342.2" height="262.8" as="geometry" />
+        </mxCell>
+        <mxCell id="QuestCompletion" value="&lt;div style=&quot;padding:3px 2px;&quot;&gt;&lt;div style=&quot;text-align:center;color:#147A60;font-size:11px;&quot;&gt;«entity»&lt;/div&gt;&lt;div style=&quot;text-align:center;font-size:16px;font-weight:bold;color:#18293E;&quot;&gt;ConclusãoQuest&lt;/div&gt;&lt;/div&gt;&lt;div style=&quot;border-top:1px solid #9BD3BC;white-space:pre;text-align:left;padding:7px 5px;color:#364860;font-size:12px;&quot;&gt;- id: UUID&#10;- questId: UUID&#10;- usuarioId: UUID&#10;- chaveIdempotencia: string&#10;- xpConcedido: number&#10;- concluidaEm: Date&lt;/div&gt;&lt;div style=&quot;border-top:1px solid #9BD3BC;white-space:pre;text-align:left;padding:7px 5px;color:#28636B;font-size:11px;&quot;&gt;+ validarUnicidade(): boolean&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#9BD3BC;fontSize=13;fontFamily=Arial;align=center;verticalAlign=top;spacingTop=2;shadow=0;" vertex="1" parent="1">
+          <mxGeometry x="1656.6" y="686.6" width="342.2" height="213.9" as="geometry" />
+        </mxCell>
+        <mxCell id="Progress" value="&lt;div style=&quot;padding:3px 2px;&quot;&gt;&lt;div style=&quot;text-align:center;color:#147A60;font-size:11px;&quot;&gt;«entity»&lt;/div&gt;&lt;div style=&quot;text-align:center;font-size:16px;font-weight:bold;color:#18293E;&quot;&gt;ProgressoUsuário&lt;/div&gt;&lt;/div&gt;&lt;div style=&quot;border-top:1px solid #9BD3BC;white-space:pre;text-align:left;padding:7px 5px;color:#364860;font-size:12px;&quot;&gt;- usuarioId: UUID&#10;- xpTotal: number&#10;- nivelAtual: number&#10;- atualizadoEm: Date&lt;/div&gt;&lt;div style=&quot;border-top:1px solid #9BD3BC;white-space:pre;text-align:left;padding:7px 5px;color:#28636B;font-size:11px;&quot;&gt;+ aplicarXp(valor): void&#10;+ atualizarNivel(): void&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#9BD3BC;fontSize=13;fontFamily=Arial;align=center;verticalAlign=top;spacingTop=2;shadow=0;" vertex="1" parent="1">
+          <mxGeometry x="1111.3" y="772.2" width="342.2" height="195.6" as="geometry" />
+        </mxCell>
+        <mxCell id="edge_0" value="1 — 0..* · pertence" style="edgeStyle=none;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#6B8198;strokeWidth=1.4;fontFamily=Arial;fontSize=10;fontColor=#51647A;startArrow=none;endArrow=none;" edge="1" parent="1" source="Classroom" target="User">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge_1" value="1 — 0..* · autentica" style="edgeStyle=none;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#6B8198;strokeWidth=1.4;fontFamily=Arial;fontSize=10;fontColor=#51647A;startArrow=none;endArrow=none;" edge="1" parent="1" source="User" target="Session">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge_2" value="1 — 0..* · possui" style="edgeStyle=none;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#6B8198;strokeWidth=1.4;fontFamily=Arial;fontSize=10;fontColor=#51647A;startArrow=none;endArrow=none;" edge="1" parent="1" source="User" target="Quest">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge_3" value="1 — 0..* · conclusões" style="edgeStyle=none;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#6B8198;strokeWidth=1.4;fontFamily=Arial;fontSize=10;fontColor=#51647A;startArrow=none;endArrow=none;" edge="1" parent="1" source="Quest" target="QuestCompletion">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge_4" value="1 — 0..* · executa" style="edgeStyle=none;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#6B8198;strokeWidth=1.4;fontFamily=Arial;fontSize=10;fontColor=#51647A;startArrow=none;endArrow=none;" edge="1" parent="1" source="User" target="QuestCompletion">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge_5" value="1 — 0..1 · progride" style="edgeStyle=none;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#6B8198;strokeWidth=1.4;fontFamily=Arial;fontSize=10;fontColor=#51647A;startArrow=none;endArrow=none;" edge="1" parent="1" source="User" target="Progress">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge_6" value="XP concedido" style="edgeStyle=none;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#8B8AAF;strokeWidth=1.4;fontFamily=Arial;fontSize=10;fontColor=#51647A;dashed=1;endArrow=open;endFill=0;" edge="1" parent="1" source="QuestCompletion" target="Progress">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="hdr17" value="As conclusões são idempotentes. XP e nível são atualizados na mesma unidade transacional do crédito de Gold." style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=middle;fontSize=12;fontStyle=0;fontColor=#5A6E85;fontFamily=Arial;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="54" y="1015" width="1969" height="36" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram id="03_Guildas_Social" name="03  Squad 3">
+    <mxGraphModel dx="1400" dy="800" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="2026" pageHeight="1102" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="hdr2" value="QUESTIFY   /   UML   /   03  Squad 3" style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=middle;fontSize=27;fontStyle=1;fontColor=#142B45;fontFamily=Arial;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="54" y="20" width="1918" height="42" as="geometry" />
+        </mxCell>
+        <mxCell id="hdr3" value="Guildas, vínculos, convites, feed e interações" style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=middle;fontSize=15;fontStyle=0;fontColor=#59708A;fontFamily=Arial;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="54" y="63" width="1918" height="27" as="geometry" />
+        </mxCell>
+        <mxCell id="User" value="&lt;div style=&quot;padding:3px 2px;&quot;&gt;&lt;div style=&quot;text-align:center;color:#6A7B8E;font-size:11px;&quot;&gt;«entity»&lt;/div&gt;&lt;div style=&quot;text-align:center;font-size:16px;font-weight:bold;color:#18293E;&quot;&gt;Usuário&lt;/div&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#C6D1DD;fontSize=13;fontFamily=Arial;align=center;verticalAlign=top;spacingTop=2;shadow=0;" vertex="1" parent="1">
+          <mxGeometry x="78.4" y="740.1" width="342.2" height="55.0" as="geometry" />
+        </mxCell>
+        <mxCell id="Guild" value="&lt;div style=&quot;padding:3px 2px;&quot;&gt;&lt;div style=&quot;text-align:center;color:#B6681D;font-size:11px;&quot;&gt;«entity»&lt;/div&gt;&lt;div style=&quot;text-align:center;font-size:16px;font-weight:bold;color:#18293E;&quot;&gt;Guilda&lt;/div&gt;&lt;/div&gt;&lt;div style=&quot;border-top:1px solid #F0C78F;white-space:pre;text-align:left;padding:7px 5px;color:#364860;font-size:12px;&quot;&gt;- id: UUID&#10;- nome: string&#10;- criadorId: UUID&#10;- descricao?: string&#10;- ativa: boolean&lt;/div&gt;&lt;div style=&quot;border-top:1px solid #F0C78F;white-space:pre;text-align:left;padding:7px 5px;color:#28636B;font-size:11px;&quot;&gt;+ alterarDescricao(): void&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#F0C78F;fontSize=13;fontFamily=Arial;align=center;verticalAlign=top;spacingTop=2;shadow=0;" vertex="1" parent="1">
+          <mxGeometry x="556.6" y="348.2" width="342.2" height="197.1" as="geometry" />
+        </mxCell>
+        <mxCell id="Membership" value="&lt;div style=&quot;padding:3px 2px;&quot;&gt;&lt;div style=&quot;text-align:center;color:#B6681D;font-size:11px;&quot;&gt;«entity»&lt;/div&gt;&lt;div style=&quot;text-align:center;font-size:16px;font-weight:bold;color:#18293E;&quot;&gt;VínculoGuilda&lt;/div&gt;&lt;/div&gt;&lt;div style=&quot;border-top:1px solid #F0C78F;white-space:pre;text-align:left;padding:7px 5px;color:#364860;font-size:12px;&quot;&gt;- id: UUID&#10;- guildaId: UUID&#10;- usuarioId: UUID&#10;- papel: PapelGuilda&#10;- status: StatusVinculo&#10;- ingressouEm: Date&lt;/div&gt;&lt;div style=&quot;border-top:1px solid #F0C78F;white-space:pre;text-align:left;padding:7px 5px;color:#28636B;font-size:11px;&quot;&gt;+ alterarPapel(): void&#10;+ sair(): void&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#F0C78F;fontSize=13;fontFamily=Arial;align=center;verticalAlign=top;spacingTop=2;shadow=0;" vertex="1" parent="1">
+          <mxGeometry x="1068.5" y="161.1" width="342.2" height="229.2" as="geometry" />
+        </mxCell>
+        <mxCell id="Invite" value="&lt;div style=&quot;padding:3px 2px;&quot;&gt;&lt;div style=&quot;text-align:center;color:#B6681D;font-size:11px;&quot;&gt;«entity»&lt;/div&gt;&lt;div style=&quot;text-align:center;font-size:16px;font-weight:bold;color:#18293E;&quot;&gt;ConviteGuilda&lt;/div&gt;&lt;/div&gt;&lt;div style=&quot;border-top:1px solid #F0C78F;white-space:pre;text-align:left;padding:7px 5px;color:#364860;font-size:12px;&quot;&gt;- id: UUID&#10;- guildaId: UUID&#10;- destinatarioId: UUID&#10;- status: StatusConvite&#10;- expiraEm?: Date&lt;/div&gt;&lt;div style=&quot;border-top:1px solid #F0C78F;white-space:pre;text-align:left;padding:7px 5px;color:#28636B;font-size:11px;&quot;&gt;+ aceitar(): void&#10;+ recusar(): void&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#F0C78F;fontSize=13;fontFamily=Arial;align=center;verticalAlign=top;spacingTop=2;shadow=0;" vertex="1" parent="1">
+          <mxGeometry x="1068.5" y="436.8" width="342.2" height="212.4" as="geometry" />
+        </mxCell>
+        <mxCell id="Post" value="&lt;div style=&quot;padding:3px 2px;&quot;&gt;&lt;div style=&quot;text-align:center;color:#B6681D;font-size:11px;&quot;&gt;«entity»&lt;/div&gt;&lt;div style=&quot;text-align:center;font-size:16px;font-weight:bold;color:#18293E;&quot;&gt;Publicação&lt;/div&gt;&lt;/div&gt;&lt;div style=&quot;border-top:1px solid #F0C78F;white-space:pre;text-align:left;padding:7px 5px;color:#364860;font-size:12px;&quot;&gt;- id: UUID&#10;- guildaId: UUID&#10;- autorId: UUID&#10;- conteudo: string&#10;- criadaEm: Date&lt;/div&gt;&lt;div style=&quot;border-top:1px solid #F0C78F;white-space:pre;text-align:left;padding:7px 5px;color:#28636B;font-size:11px;&quot;&gt;+ editar(texto): void&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#F0C78F;fontSize=13;fontFamily=Arial;align=center;verticalAlign=top;spacingTop=2;shadow=0;" vertex="1" parent="1">
+          <mxGeometry x="1068.5" y="695.0" width="342.2" height="197.1" as="geometry" />
+        </mxCell>
+        <mxCell id="Comment" value="&lt;div style=&quot;padding:3px 2px;&quot;&gt;&lt;div style=&quot;text-align:center;color:#B6681D;font-size:11px;&quot;&gt;«entity»&lt;/div&gt;&lt;div style=&quot;text-align:center;font-size:16px;font-weight:bold;color:#18293E;&quot;&gt;Comentário&lt;/div&gt;&lt;/div&gt;&lt;div style=&quot;border-top:1px solid #F0C78F;white-space:pre;text-align:left;padding:7px 5px;color:#364860;font-size:12px;&quot;&gt;- id: UUID&#10;- publicacaoId: UUID&#10;- autorId: UUID&#10;- texto: string&#10;- criadoEm: Date&lt;/div&gt;&lt;div style=&quot;border-top:1px solid #F0C78F;white-space:pre;text-align:left;padding:7px 5px;color:#28636B;font-size:11px;&quot;&gt;+ editar(texto): void&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#F0C78F;fontSize=13;fontFamily=Arial;align=center;verticalAlign=top;spacingTop=2;shadow=0;" vertex="1" parent="1">
+          <mxGeometry x="1606.3" y="468.9" width="342.2" height="197.1" as="geometry" />
+        </mxCell>
+        <mxCell id="Reaction" value="&lt;div style=&quot;padding:3px 2px;&quot;&gt;&lt;div style=&quot;text-align:center;color:#B6681D;font-size:11px;&quot;&gt;«entity»&lt;/div&gt;&lt;div style=&quot;text-align:center;font-size:16px;font-weight:bold;color:#18293E;&quot;&gt;Reação&lt;/div&gt;&lt;/div&gt;&lt;div style=&quot;border-top:1px solid #F0C78F;white-space:pre;text-align:left;padding:7px 5px;color:#364860;font-size:12px;&quot;&gt;- id: UUID&#10;- publicacaoId: UUID&#10;- usuarioId: UUID&#10;- tipo: TipoReacao&lt;/div&gt;&lt;div style=&quot;border-top:1px solid #F0C78F;white-space:pre;text-align:left;padding:7px 5px;color:#28636B;font-size:11px;&quot;&gt;+ alternar(): void&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#F0C78F;fontSize=13;fontFamily=Arial;align=center;verticalAlign=top;spacingTop=2;shadow=0;" vertex="1" parent="1">
+          <mxGeometry x="1606.3" y="712.6" width="342.2" height="180.3" as="geometry" />
+        </mxCell>
+        <mxCell id="edge_0" value="1 — 0..* · cria" style="edgeStyle=none;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#6B8198;strokeWidth=1.4;fontFamily=Arial;fontSize=10;fontColor=#51647A;startArrow=none;endArrow=none;" edge="1" parent="1" source="User" target="Guild">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge_1" value="1 — 0..* · participa" style="edgeStyle=none;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#6B8198;strokeWidth=1.4;fontFamily=Arial;fontSize=10;fontColor=#51647A;startArrow=none;endArrow=none;" edge="1" parent="1" source="User" target="Membership">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge_2" value="1 — 0..* · organiza" style="edgeStyle=none;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#6B8198;strokeWidth=1.4;fontFamily=Arial;fontSize=10;fontColor=#51647A;startArrow=none;endArrow=none;" edge="1" parent="1" source="Guild" target="Membership">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge_3" value="1 — 0..* · emite" style="edgeStyle=none;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#6B8198;strokeWidth=1.4;fontFamily=Arial;fontSize=10;fontColor=#51647A;startArrow=none;endArrow=none;" edge="1" parent="1" source="Guild" target="Invite">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge_4" value="1 — 0..* · recebe" style="edgeStyle=none;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#6B8198;strokeWidth=1.4;fontFamily=Arial;fontSize=10;fontColor=#51647A;startArrow=none;endArrow=none;" edge="1" parent="1" source="User" target="Invite">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge_5" value="1 — 0..* · feed" style="edgeStyle=none;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#6B8198;strokeWidth=1.4;fontFamily=Arial;fontSize=10;fontColor=#51647A;startArrow=none;endArrow=none;" edge="1" parent="1" source="Guild" target="Post">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge_6" value="1 — 0..* · autor" style="edgeStyle=none;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#6B8198;strokeWidth=1.4;fontFamily=Arial;fontSize=10;fontColor=#51647A;startArrow=none;endArrow=none;" edge="1" parent="1" source="User" target="Post">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge_7" value="1 — 0..* · comentários" style="edgeStyle=none;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#6B8198;strokeWidth=1.4;fontFamily=Arial;fontSize=10;fontColor=#51647A;startArrow=none;endArrow=none;" edge="1" parent="1" source="Post" target="Comment">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge_8" value="1 — 0..* · autor" style="edgeStyle=none;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#6B8198;strokeWidth=1.4;fontFamily=Arial;fontSize=10;fontColor=#51647A;startArrow=none;endArrow=none;" edge="1" parent="1" source="User" target="Comment">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge_9" value="1 — 0..* · reações" style="edgeStyle=none;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#6B8198;strokeWidth=1.4;fontFamily=Arial;fontSize=10;fontColor=#51647A;startArrow=none;endArrow=none;" edge="1" parent="1" source="Post" target="Reaction">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge_10" value="1 — 0..* · reage" style="edgeStyle=none;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#6B8198;strokeWidth=1.4;fontFamily=Arial;fontSize=10;fontColor=#51647A;startArrow=none;endArrow=none;" edge="1" parent="1" source="User" target="Reaction">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="hdr22" value="VínculoGuilda resolve associação N:N de usuários e guildas; regras e permissões são aplicadas pelo serviço social." style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=middle;fontSize=12;fontStyle=0;fontColor=#5A6E85;fontFamily=Arial;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="54" y="1044" width="1918" height="36" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram id="04_Economia_Transacional" name="04  Squad 4 • Economia">
+    <mxGraphModel dx="1400" dy="800" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1567" pageHeight="944" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="hdr2" value="QUESTIFY   /   UML   /   04  Squad 4 • Economia" style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=middle;fontSize=27;fontStyle=1;fontColor=#142B45;fontFamily=Arial;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="54" y="20" width="1459" height="42" as="geometry" />
+        </mxCell>
+        <mxCell id="hdr3" value="Gold, carteira, extrato, catálogo e resgates" style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=middle;fontSize=15;fontStyle=0;fontColor=#59708A;fontFamily=Arial;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="54" y="63" width="1459" height="27" as="geometry" />
+        </mxCell>
+        <mxCell id="User" value="&lt;div style=&quot;padding:3px 2px;&quot;&gt;&lt;div style=&quot;text-align:center;color:#6A7B8E;font-size:11px;&quot;&gt;«entity»&lt;/div&gt;&lt;div style=&quot;text-align:center;font-size:16px;font-weight:bold;color:#18293E;&quot;&gt;Usuário&lt;/div&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#C6D1DD;fontSize=13;fontFamily=Arial;align=center;verticalAlign=top;spacingTop=2;shadow=0;" vertex="1" parent="1">
+          <mxGeometry x="78.4" y="161.1" width="342.2" height="55.0" as="geometry" />
+        </mxCell>
+        <mxCell id="QuestCompletion" value="&lt;div style=&quot;padding:3px 2px;&quot;&gt;&lt;div style=&quot;text-align:center;color:#6A7B8E;font-size:11px;&quot;&gt;«entity»&lt;/div&gt;&lt;div style=&quot;text-align:center;font-size:16px;font-weight:bold;color:#18293E;&quot;&gt;ConclusãoQuest&lt;/div&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#C6D1DD;fontSize=13;fontFamily=Arial;align=center;verticalAlign=top;spacingTop=2;shadow=0;" vertex="1" parent="1">
+          <mxGeometry x="78.4" y="796.6" width="342.2" height="55.0" as="geometry" />
+        </mxCell>
+        <mxCell id="Wallet" value="&lt;div style=&quot;padding:3px 2px;&quot;&gt;&lt;div style=&quot;text-align:center;color:#924C85;font-size:11px;&quot;&gt;«entity»&lt;/div&gt;&lt;div style=&quot;text-align:center;font-size:16px;font-weight:bold;color:#18293E;&quot;&gt;Carteira&lt;/div&gt;&lt;/div&gt;&lt;div style=&quot;border-top:1px solid #D8A9D0;white-space:pre;text-align:left;padding:7px 5px;color:#364860;font-size:12px;&quot;&gt;- id: UUID&#10;- usuarioId: UUID&#10;- saldoGold: number&#10;- atualizadaEm: Date&lt;/div&gt;&lt;div style=&quot;border-top:1px solid #D8A9D0;white-space:pre;text-align:left;padding:7px 5px;color:#28636B;font-size:11px;&quot;&gt;+ temSaldo(valor): boolean&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#D8A9D0;fontSize=13;fontFamily=Arial;align=center;verticalAlign=top;spacingTop=2;shadow=0;" vertex="1" parent="1">
+          <mxGeometry x="605.5" y="286.3" width="342.2" height="180.3" as="geometry" />
+        </mxCell>
+        <mxCell id="Ledger" value="&lt;div style=&quot;padding:3px 2px;&quot;&gt;&lt;div style=&quot;text-align:center;color:#924C85;font-size:11px;&quot;&gt;«entity»&lt;/div&gt;&lt;div style=&quot;text-align:center;font-size:16px;font-weight:bold;color:#18293E;&quot;&gt;LançamentoGold&lt;/div&gt;&lt;/div&gt;&lt;div style=&quot;border-top:1px solid #D8A9D0;white-space:pre;text-align:left;padding:7px 5px;color:#364860;font-size:12px;&quot;&gt;- id: UUID&#10;- carteiraId: UUID&#10;- tipo: CREDITO | DEBITO&#10;- valor: number&#10;- origemConclusaoId?: UUID&#10;- resgateId?: UUID&#10;- criadoEm: Date&lt;/div&gt;&lt;div style=&quot;border-top:1px solid #D8A9D0;white-space:pre;text-align:left;padding:7px 5px;color:#28636B;font-size:11px;&quot;&gt;+ origemUnica(): boolean&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#D8A9D0;fontSize=13;fontFamily=Arial;align=center;verticalAlign=top;spacingTop=2;shadow=0;" vertex="1" parent="1">
+          <mxGeometry x="1146.3" y="287.1" width="342.2" height="230.7" as="geometry" />
+        </mxCell>
+        <mxCell id="Reward" value="&lt;div style=&quot;padding:3px 2px;&quot;&gt;&lt;div style=&quot;text-align:center;color:#924C85;font-size:11px;&quot;&gt;«entity»&lt;/div&gt;&lt;div style=&quot;text-align:center;font-size:16px;font-weight:bold;color:#18293E;&quot;&gt;Recompensa&lt;/div&gt;&lt;/div&gt;&lt;div style=&quot;border-top:1px solid #D8A9D0;white-space:pre;text-align:left;padding:7px 5px;color:#364860;font-size:12px;&quot;&gt;- id: UUID&#10;- codigo: string&#10;- nome: string&#10;- custoGold: number&#10;- tipoBeneficio: TipoBeneficio&#10;- itemTipoId?: UUID&#10;- ativa: boolean&lt;/div&gt;&lt;div style=&quot;border-top:1px solid #D8A9D0;white-space:pre;text-align:left;padding:7px 5px;color:#28636B;font-size:11px;&quot;&gt;+ estaDisponivel(): boolean&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#D8A9D0;fontSize=13;fontFamily=Arial;align=center;verticalAlign=top;spacingTop=2;shadow=0;" vertex="1" parent="1">
+          <mxGeometry x="78.4" y="494.9" width="342.2" height="230.7" as="geometry" />
+        </mxCell>
+        <mxCell id="Redemption" value="&lt;div style=&quot;padding:3px 2px;&quot;&gt;&lt;div style=&quot;text-align:center;color:#924C85;font-size:11px;&quot;&gt;«entity»&lt;/div&gt;&lt;div style=&quot;text-align:center;font-size:16px;font-weight:bold;color:#18293E;&quot;&gt;Resgate&lt;/div&gt;&lt;/div&gt;&lt;div style=&quot;border-top:1px solid #D8A9D0;white-space:pre;text-align:left;padding:7px 5px;color:#364860;font-size:12px;&quot;&gt;- id: UUID&#10;- usuarioId: UUID&#10;- recompensaId: UUID&#10;- chaveIdempotencia: string&#10;- custoGold: number&#10;- realizadoEm: Date&lt;/div&gt;&lt;div style=&quot;border-top:1px solid #D8A9D0;white-space:pre;text-align:left;padding:7px 5px;color:#28636B;font-size:11px;&quot;&gt;+ confirmar(): void&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#D8A9D0;fontSize=13;fontFamily=Arial;align=center;verticalAlign=top;spacingTop=2;shadow=0;" vertex="1" parent="1">
+          <mxGeometry x="605.5" y="512.5" width="342.2" height="213.9" as="geometry" />
+        </mxCell>
+        <mxCell id="edge_0" value="1 — 0..1 · possui" style="edgeStyle=none;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#6B8198;strokeWidth=1.4;fontFamily=Arial;fontSize=10;fontColor=#51647A;startArrow=none;endArrow=none;" edge="1" parent="1" source="User" target="Wallet">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge_1" value="1 — 0..* · lançamentos" style="edgeStyle=none;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#6B8198;strokeWidth=1.4;fontFamily=Arial;fontSize=10;fontColor=#51647A;startArrow=diamond;startFill=1;endArrow=none;" edge="1" parent="1" source="Wallet" target="Ledger">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge_2" value="1 — 0..* · solicita" style="edgeStyle=none;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#6B8198;strokeWidth=1.4;fontFamily=Arial;fontSize=10;fontColor=#51647A;startArrow=none;endArrow=none;" edge="1" parent="1" source="User" target="Redemption">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge_3" value="1 — 0..* · resgatada" style="edgeStyle=none;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#6B8198;strokeWidth=1.4;fontFamily=Arial;fontSize=10;fontColor=#51647A;startArrow=none;endArrow=none;" edge="1" parent="1" source="Reward" target="Redemption">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge_4" value="0..1 — 1 · débito" style="edgeStyle=none;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#8B8AAF;strokeWidth=1.4;fontFamily=Arial;fontSize=10;fontColor=#51647A;dashed=1;endArrow=open;endFill=0;" edge="1" parent="1" source="Redemption" target="Ledger">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge_5" value="0..1 — 1 · crédito" style="edgeStyle=none;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#8B8AAF;strokeWidth=1.4;fontFamily=Arial;fontSize=10;fontColor=#51647A;dashed=1;endArrow=open;endFill=0;" edge="1" parent="1" source="QuestCompletion" target="Ledger">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="hdr16" value="Saldo não negativo, idempotência no resgate/crédito e bloqueio concorrente da carteira. Histórico é imutável." style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=middle;fontSize=12;fontStyle=0;fontColor=#5A6E85;fontFamily=Arial;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="54" y="886" width="1459" height="36" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram id="05_Recompensas_Beneficios" name="05  Squad 4 • Benefícios">
+    <mxGraphModel dx="1400" dy="800" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1570" pageHeight="1333" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="hdr2" value="QUESTIFY   /   UML   /   05  Squad 4 • Benefícios" style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=middle;fontSize=27;fontStyle=1;fontColor=#142B45;fontFamily=Arial;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="54" y="20" width="1462" height="42" as="geometry" />
+        </mxCell>
+        <mxCell id="hdr3" value="Itens consumíveis, efeitos temporários e uso integrado" style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=middle;fontSize=15;fontStyle=0;fontColor=#59708A;fontFamily=Arial;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="54" y="63" width="1462" height="27" as="geometry" />
+        </mxCell>
+        <mxCell id="User" value="&lt;div style=&quot;padding:3px 2px;&quot;&gt;&lt;div style=&quot;text-align:center;color:#6A7B8E;font-size:11px;&quot;&gt;«entity»&lt;/div&gt;&lt;div style=&quot;text-align:center;font-size:16px;font-weight:bold;color:#18293E;&quot;&gt;Usuário&lt;/div&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#C6D1DD;fontSize=13;fontFamily=Arial;align=center;verticalAlign=top;spacingTop=2;shadow=0;" vertex="1" parent="1">
+          <mxGeometry x="83.0" y="161.0" width="342.2" height="55.0" as="geometry" />
+        </mxCell>
+        <mxCell id="Quest" value="&lt;div style=&quot;padding:3px 2px;&quot;&gt;&lt;div style=&quot;text-align:center;color:#6A7B8E;font-size:11px;&quot;&gt;«entity»&lt;/div&gt;&lt;div style=&quot;text-align:center;font-size:16px;font-weight:bold;color:#18293E;&quot;&gt;Quest&lt;/div&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#C6D1DD;fontSize=13;fontFamily=Arial;align=center;verticalAlign=top;spacingTop=2;shadow=0;" vertex="1" parent="1">
+          <mxGeometry x="83.0" y="1186.1" width="342.2" height="55.0" as="geometry" />
+        </mxCell>
+        <mxCell id="Streak" value="&lt;div style=&quot;padding:3px 2px;&quot;&gt;&lt;div style=&quot;text-align:center;color:#6A7B8E;font-size:11px;&quot;&gt;«entity»&lt;/div&gt;&lt;div style=&quot;text-align:center;font-size:16px;font-weight:bold;color:#18293E;&quot;&gt;SequênciaAtividade&lt;/div&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#C6D1DD;fontSize=13;fontFamily=Arial;align=center;verticalAlign=top;spacingTop=2;shadow=0;" vertex="1" parent="1">
+          <mxGeometry x="83.0" y="1056.3" width="342.2" height="55.0" as="geometry" />
+        </mxCell>
+        <mxCell id="Reward" value="&lt;div style=&quot;padding:3px 2px;&quot;&gt;&lt;div style=&quot;text-align:center;color:#924C85;font-size:11px;&quot;&gt;«entity»&lt;/div&gt;&lt;div style=&quot;text-align:center;font-size:16px;font-weight:bold;color:#18293E;&quot;&gt;Recompensa&lt;/div&gt;&lt;/div&gt;&lt;div style=&quot;border-top:1px solid #D8A9D0;white-space:pre;text-align:left;padding:7px 5px;color:#364860;font-size:12px;&quot;&gt;- id: UUID&#10;- codigo: string&#10;- nome: string&#10;- custoGold: number&#10;- tipoBeneficio: TipoBeneficio&#10;- itemTipoId?: UUID&#10;- ativa: boolean&lt;/div&gt;&lt;div style=&quot;border-top:1px solid #D8A9D0;white-space:pre;text-align:left;padding:7px 5px;color:#28636B;font-size:11px;&quot;&gt;+ estaDisponivel(): boolean&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#D8A9D0;fontSize=13;fontFamily=Arial;align=center;verticalAlign=top;spacingTop=2;shadow=0;" vertex="1" parent="1">
+          <mxGeometry x="83.0" y="520.8" width="342.2" height="230.7" as="geometry" />
+        </mxCell>
+        <mxCell id="Redemption" value="&lt;div style=&quot;padding:3px 2px;&quot;&gt;&lt;div style=&quot;text-align:center;color:#924C85;font-size:11px;&quot;&gt;«entity»&lt;/div&gt;&lt;div style=&quot;text-align:center;font-size:16px;font-weight:bold;color:#18293E;&quot;&gt;Resgate&lt;/div&gt;&lt;/div&gt;&lt;div style=&quot;border-top:1px solid #D8A9D0;white-space:pre;text-align:left;padding:7px 5px;color:#364860;font-size:12px;&quot;&gt;- id: UUID&#10;- usuarioId: UUID&#10;- recompensaId: UUID&#10;- chaveIdempotencia: string&#10;- custoGold: number&#10;- realizadoEm: Date&lt;/div&gt;&lt;div style=&quot;border-top:1px solid #D8A9D0;white-space:pre;text-align:left;padding:7px 5px;color:#28636B;font-size:11px;&quot;&gt;+ confirmar(): void&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#D8A9D0;fontSize=13;fontFamily=Arial;align=center;verticalAlign=top;spacingTop=2;shadow=0;" vertex="1" parent="1">
+          <mxGeometry x="654.4" y="772.1" width="342.2" height="213.9" as="geometry" />
+        </mxCell>
+        <mxCell id="ItemType" value="&lt;div style=&quot;padding:3px 2px;&quot;&gt;&lt;div style=&quot;text-align:center;color:#924C85;font-size:11px;&quot;&gt;«entity»&lt;/div&gt;&lt;div style=&quot;text-align:center;font-size:16px;font-weight:bold;color:#18293E;&quot;&gt;TipoItem&lt;/div&gt;&lt;/div&gt;&lt;div style=&quot;border-top:1px solid #D8A9D0;white-space:pre;text-align:left;padding:7px 5px;color:#364860;font-size:12px;&quot;&gt;- id: UUID&#10;- codigo: CodigoItem&#10;- nome: string&#10;- unidadesPorResgate: number&lt;/div&gt;&lt;div style=&quot;border-top:1px solid #D8A9D0;white-space:pre;text-align:left;padding:7px 5px;color:#28636B;font-size:11px;&quot;&gt;+ validarAcumulo(qtd): boolean&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#D8A9D0;fontSize=13;fontFamily=Arial;align=center;verticalAlign=top;spacingTop=2;shadow=0;" vertex="1" parent="1">
+          <mxGeometry x="654.4" y="546.0" width="342.2" height="180.3" as="geometry" />
+        </mxCell>
+        <mxCell id="UserItem" value="&lt;div style=&quot;padding:3px 2px;&quot;&gt;&lt;div style=&quot;text-align:center;color:#924C85;font-size:11px;&quot;&gt;«entity»&lt;/div&gt;&lt;div style=&quot;text-align:center;font-size:16px;font-weight:bold;color:#18293E;&quot;&gt;ItemUsuário&lt;/div&gt;&lt;/div&gt;&lt;div style=&quot;border-top:1px solid #D8A9D0;white-space:pre;text-align:left;padding:7px 5px;color:#364860;font-size:12px;&quot;&gt;- usuarioId: UUID&#10;- tipoItemId: UUID&#10;- quantidade: number&#10;- atualizadoEm: Date&lt;/div&gt;&lt;div style=&quot;border-top:1px solid #D8A9D0;white-space:pre;text-align:left;padding:7px 5px;color:#28636B;font-size:11px;&quot;&gt;+ possui(qtd): boolean&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#D8A9D0;fontSize=13;fontFamily=Arial;align=center;verticalAlign=top;spacingTop=2;shadow=0;" vertex="1" parent="1">
+          <mxGeometry x="1149.4" y="352.0" width="342.2" height="180.3" as="geometry" />
+        </mxCell>
+        <mxCell id="ActiveEffect" value="&lt;div style=&quot;padding:3px 2px;&quot;&gt;&lt;div style=&quot;text-align:center;color:#924C85;font-size:11px;&quot;&gt;«entity»&lt;/div&gt;&lt;div style=&quot;text-align:center;font-size:16px;font-weight:bold;color:#18293E;&quot;&gt;EfeitoAtivoUsuário&lt;/div&gt;&lt;/div&gt;&lt;div style=&quot;border-top:1px solid #D8A9D0;white-space:pre;text-align:left;padding:7px 5px;color:#364860;font-size:12px;&quot;&gt;- id: UUID&#10;- usuarioId: UUID&#10;- recompensaId: UUID&#10;- codigoEfeito: CodigoEfeito&#10;- iniciadoEm: Date&#10;- expiraEm: Date&lt;/div&gt;&lt;div style=&quot;border-top:1px solid #D8A9D0;white-space:pre;text-align:left;padding:7px 5px;color:#28636B;font-size:11px;&quot;&gt;+ estaAtivo(agora): boolean&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#D8A9D0;fontSize=13;fontFamily=Arial;align=center;verticalAlign=top;spacingTop=2;shadow=0;" vertex="1" parent="1">
+          <mxGeometry x="654.4" y="286.3" width="342.2" height="213.9" as="geometry" />
+        </mxCell>
+        <mxCell id="edge_0" value="1 — 0..* · adquirida" style="edgeStyle=none;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#6B8198;strokeWidth=1.4;fontFamily=Arial;fontSize=10;fontColor=#51647A;startArrow=none;endArrow=none;" edge="1" parent="1" source="Reward" target="Redemption">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge_1" value="0..* — 0..1 · item guardado" style="edgeStyle=none;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#6B8198;strokeWidth=1.4;fontFamily=Arial;fontSize=10;fontColor=#51647A;startArrow=none;endArrow=none;" edge="1" parent="1" source="Reward" target="ItemType">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge_2" value="1 — 0..* · inventário" style="edgeStyle=none;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#6B8198;strokeWidth=1.4;fontFamily=Arial;fontSize=10;fontColor=#51647A;startArrow=none;endArrow=none;" edge="1" parent="1" source="User" target="UserItem">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge_3" value="1 — 0..* · saldos" style="edgeStyle=none;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#6B8198;strokeWidth=1.4;fontFamily=Arial;fontSize=10;fontColor=#51647A;startArrow=none;endArrow=none;" edge="1" parent="1" source="ItemType" target="UserItem">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge_4" value="1 — 0..* · efeitos" style="edgeStyle=none;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#6B8198;strokeWidth=1.4;fontFamily=Arial;fontSize=10;fontColor=#51647A;startArrow=none;endArrow=none;" edge="1" parent="1" source="User" target="ActiveEffect">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge_5" value="1 — 0..* · ativa" style="edgeStyle=none;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#6B8198;strokeWidth=1.4;fontFamily=Arial;fontSize=10;fontColor=#51647A;startArrow=none;endArrow=none;" edge="1" parent="1" source="Reward" target="ActiveEffect">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge_6" value="prorrogação" style="edgeStyle=none;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#8B8AAF;strokeWidth=1.4;fontFamily=Arial;fontSize=10;fontColor=#51647A;dashed=1;endArrow=open;endFill=0;" edge="1" parent="1" source="UserItem" target="Quest">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge_7" value="proteção" style="edgeStyle=none;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#8B8AAF;strokeWidth=1.4;fontFamily=Arial;fontSize=10;fontColor=#51647A;dashed=1;endArrow=open;endFill=0;" edge="1" parent="1" source="UserItem" target="Streak">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge_8" value="recuperação" style="edgeStyle=none;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#8B8AAF;strokeWidth=1.4;fontFamily=Arial;fontSize=10;fontColor=#51647A;dashed=1;endArrow=open;endFill=0;" edge="1" parent="1" source="Redemption" target="Streak">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="hdr21" value="Prorrogação: 24 h; XP dobrado: efeito de 24 h; proteção: item guardado; recuperar sequência: imediato." style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=middle;fontSize=12;fontStyle=0;fontColor=#5A6E85;fontFamily=Arial;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="54" y="1275" width="1462" height="36" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram id="06_Analytics_Sequencia" name="06  Squad 6">
+    <mxGraphModel dx="1400" dy="800" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1874" pageHeight="1442" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="hdr2" value="QUESTIFY   /   UML   /   06  Squad 6" style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=middle;fontSize=27;fontStyle=1;fontColor=#142B45;fontFamily=Arial;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="54" y="20" width="1766" height="42" as="geometry" />
+        </mxCell>
+        <mxCell id="hdr3" value="Sequência de atividades, consultas e modelos de leitura" style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=middle;fontSize=15;fontStyle=0;fontColor=#59708A;fontFamily=Arial;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="54" y="63" width="1766" height="27" as="geometry" />
+        </mxCell>
+        <mxCell id="User" value="&lt;div style=&quot;padding:3px 2px;&quot;&gt;&lt;div style=&quot;text-align:center;color:#6A7B8E;font-size:11px;&quot;&gt;«entity»&lt;/div&gt;&lt;div style=&quot;text-align:center;font-size:16px;font-weight:bold;color:#18293E;&quot;&gt;Usuário&lt;/div&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#C6D1DD;fontSize=13;fontFamily=Arial;align=center;verticalAlign=top;spacingTop=2;shadow=0;" vertex="1" parent="1">
+          <mxGeometry x="358.0" y="387.2" width="342.2" height="55.0" as="geometry" />
+        </mxCell>
+        <mxCell id="Guild" value="&lt;div style=&quot;padding:3px 2px;&quot;&gt;&lt;div style=&quot;text-align:center;color:#6A7B8E;font-size:11px;&quot;&gt;«entity»&lt;/div&gt;&lt;div style=&quot;text-align:center;font-size:16px;font-weight:bold;color:#18293E;&quot;&gt;Guilda&lt;/div&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#C6D1DD;fontSize=13;fontFamily=Arial;align=center;verticalAlign=top;spacingTop=2;shadow=0;" vertex="1" parent="1">
+          <mxGeometry x="358.0" y="161.1" width="342.2" height="55.0" as="geometry" />
+        </mxCell>
+        <mxCell id="Membership" value="&lt;div style=&quot;padding:3px 2px;&quot;&gt;&lt;div style=&quot;text-align:center;color:#6A7B8E;font-size:11px;&quot;&gt;«entity»&lt;/div&gt;&lt;div style=&quot;text-align:center;font-size:16px;font-weight:bold;color:#18293E;&quot;&gt;VínculoGuilda&lt;/div&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#C6D1DD;fontSize=13;fontFamily=Arial;align=center;verticalAlign=top;spacingTop=2;shadow=0;" vertex="1" parent="1">
+          <mxGeometry x="358.0" y="261.9" width="342.2" height="55.0" as="geometry" />
+        </mxCell>
+        <mxCell id="Progress" value="&lt;div style=&quot;padding:3px 2px;&quot;&gt;&lt;div style=&quot;text-align:center;color:#6A7B8E;font-size:11px;&quot;&gt;«entity»&lt;/div&gt;&lt;div style=&quot;text-align:center;font-size:16px;font-weight:bold;color:#18293E;&quot;&gt;ProgressoUsuário&lt;/div&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#C6D1DD;fontSize=13;fontFamily=Arial;align=center;verticalAlign=top;spacingTop=2;shadow=0;" vertex="1" parent="1">
+          <mxGeometry x="358.0" y="1193.9" width="342.2" height="55.0" as="geometry" />
+        </mxCell>
+        <mxCell id="QuestCompletion" value="&lt;div style=&quot;padding:3px 2px;&quot;&gt;&lt;div style=&quot;text-align:center;color:#6A7B8E;font-size:11px;&quot;&gt;«entity»&lt;/div&gt;&lt;div style=&quot;text-align:center;font-size:16px;font-weight:bold;color:#18293E;&quot;&gt;ConclusãoQuest&lt;/div&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#C6D1DD;fontSize=13;fontFamily=Arial;align=center;verticalAlign=top;spacingTop=2;shadow=0;" vertex="1" parent="1">
+          <mxGeometry x="358.0" y="1294.7" width="342.2" height="55.0" as="geometry" />
+        </mxCell>
+        <mxCell id="Streak" value="&lt;div style=&quot;padding:3px 2px;&quot;&gt;&lt;div style=&quot;text-align:center;color:#6253A6;font-size:11px;&quot;&gt;«entity»&lt;/div&gt;&lt;div style=&quot;text-align:center;font-size:16px;font-weight:bold;color:#18293E;&quot;&gt;SequênciaAtividade&lt;/div&gt;&lt;/div&gt;&lt;div style=&quot;border-top:1px solid #B6ABEA;white-space:pre;text-align:left;padding:7px 5px;color:#364860;font-size:12px;&quot;&gt;- usuarioId: UUID&#10;- diasConsecutivos: number&#10;- ultimaAtividadeEm?: Date&#10;- atualizadoEm: Date&lt;/div&gt;&lt;div style=&quot;border-top:1px solid #B6ABEA;white-space:pre;text-align:left;padding:7px 5px;color:#28636B;font-size:11px;&quot;&gt;+ registrarAtividade(data): void&#10;+ recuperar(): void&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#B6ABEA;fontSize=13;fontFamily=Arial;align=center;verticalAlign=top;spacingTop=2;shadow=0;" vertex="1" parent="1">
+          <mxGeometry x="917.2" y="512.5" width="342.2" height="195.6" as="geometry" />
+        </mxCell>
+        <mxCell id="Activity" value="&lt;div style=&quot;padding:3px 2px;&quot;&gt;&lt;div style=&quot;text-align:center;color:#6253A6;font-size:11px;&quot;&gt;«entity»&lt;/div&gt;&lt;div style=&quot;text-align:center;font-size:16px;font-weight:bold;color:#18293E;&quot;&gt;RegistroAtividade&lt;/div&gt;&lt;/div&gt;&lt;div style=&quot;border-top:1px solid #B6ABEA;white-space:pre;text-align:left;padding:7px 5px;color:#364860;font-size:12px;&quot;&gt;- id: UUID&#10;- usuarioId: UUID&#10;- questConclusaoId?: UUID&#10;- data: Date&lt;/div&gt;&lt;div style=&quot;border-top:1px solid #B6ABEA;white-space:pre;text-align:left;padding:7px 5px;color:#28636B;font-size:11px;&quot;&gt;+ registrar(): void&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#B6ABEA;fontSize=13;fontFamily=Arial;align=center;verticalAlign=top;spacingTop=2;shadow=0;" vertex="1" parent="1">
+          <mxGeometry x="1453.5" y="515.5" width="342.2" height="180.3" as="geometry" />
+        </mxCell>
+        <mxCell id="RankingPosition" value="&lt;div style=&quot;padding:3px 2px;&quot;&gt;&lt;div style=&quot;text-align:center;color:#6753A9;font-size:11px;&quot;&gt;«readModel»&lt;/div&gt;&lt;div style=&quot;text-align:center;font-size:16px;font-weight:bold;color:#18293E;&quot;&gt;PosiçãoRanking&lt;/div&gt;&lt;/div&gt;&lt;div style=&quot;border-top:1px solid #C6BBF2;white-space:pre;text-align:left;padding:7px 5px;color:#364860;font-size:12px;&quot;&gt;- escopo: EscopoRanking&#10;- periodo: Periodo&#10;- referenciaId: UUID&#10;- posicao: number&#10;- pontuacao: number&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#C6BBF2;fontSize=13;fontFamily=Arial;align=center;verticalAlign=top;spacingTop=2;shadow=0;" vertex="1" parent="1">
+          <mxGeometry x="358.0" y="513.3" width="342.2" height="160.4" as="geometry" />
+        </mxCell>
+        <mxCell id="Summary" value="&lt;div style=&quot;padding:3px 2px;&quot;&gt;&lt;div style=&quot;text-align:center;color:#6753A9;font-size:11px;&quot;&gt;«readModel»&lt;/div&gt;&lt;div style=&quot;text-align:center;font-size:16px;font-weight:bold;color:#18293E;&quot;&gt;ResumoProgresso&lt;/div&gt;&lt;/div&gt;&lt;div style=&quot;border-top:1px solid #C6BBF2;white-space:pre;text-align:left;padding:7px 5px;color:#364860;font-size:12px;&quot;&gt;- usuarioId: UUID&#10;- xpTotal: number&#10;- nivelAtual: number&#10;- goldAtual: number&#10;- sequenciaAtual: number&#10;- questsConcluidas: number&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#C6BBF2;fontSize=13;fontFamily=Arial;align=center;verticalAlign=top;spacingTop=2;shadow=0;" vertex="1" parent="1">
+          <mxGeometry x="358.0" y="720.3" width="342.2" height="177.2" as="geometry" />
+        </mxCell>
+        <mxCell id="RankingFilter" value="&lt;div style=&quot;padding:3px 2px;&quot;&gt;&lt;div style=&quot;text-align:center;color:#6253A6;font-size:11px;&quot;&gt;«valueObject»&lt;/div&gt;&lt;div style=&quot;text-align:center;font-size:16px;font-weight:bold;color:#18293E;&quot;&gt;FiltroRanking&lt;/div&gt;&lt;/div&gt;&lt;div style=&quot;border-top:1px solid #B6ABEA;white-space:pre;text-align:left;padding:7px 5px;color:#364860;font-size:12px;&quot;&gt;- escopo: individual | guilda | turma&#10;- periodo: diario | semanal | mensal&#10;- cursor?: string&#10;- limite: number&lt;/div&gt;&lt;div style=&quot;border-top:1px solid #B6ABEA;white-space:pre;text-align:left;padding:7px 5px;color:#28636B;font-size:11px;&quot;&gt;+ validar(): void&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#B6ABEA;fontSize=13;fontFamily=Arial;align=center;verticalAlign=top;spacingTop=2;shadow=0;" vertex="1" parent="1">
+          <mxGeometry x="358.0" y="943.3" width="342.2" height="180.3" as="geometry" />
+        </mxCell>
+        <mxCell id="edge_0" value="1 — 0..1 · sequência" style="edgeStyle=none;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#6B8198;strokeWidth=1.4;fontFamily=Arial;fontSize=10;fontColor=#51647A;startArrow=none;endArrow=none;" edge="1" parent="1" source="User" target="Streak">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge_1" value="1 — 0..* · atividade" style="edgeStyle=none;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#6B8198;strokeWidth=1.4;fontFamily=Arial;fontSize=10;fontColor=#51647A;startArrow=none;endArrow=none;" edge="1" parent="1" source="User" target="Activity">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge_2" value="1 — 0..* · baseada em" style="edgeStyle=none;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#6B8198;strokeWidth=1.4;fontFamily=Arial;fontSize=10;fontColor=#51647A;startArrow=none;endArrow=none;" edge="1" parent="1" source="Streak" target="Activity">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge_3" value="0..1 — 0..1 · origem" style="edgeStyle=none;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#8B8AAF;strokeWidth=1.4;fontFamily=Arial;fontSize=10;fontColor=#51647A;dashed=1;endArrow=open;endFill=0;" edge="1" parent="1" source="QuestCompletion" target="Activity">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge_4" value="consulta XP" style="edgeStyle=none;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#8B8AAF;strokeWidth=1.4;fontFamily=Arial;fontSize=10;fontColor=#51647A;dashed=1;endArrow=open;endFill=0;" edge="1" parent="1" source="Progress" target="RankingPosition">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge_5" value="consulta guilda" style="edgeStyle=none;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#8B8AAF;strokeWidth=1.4;fontFamily=Arial;fontSize=10;fontColor=#51647A;dashed=1;endArrow=open;endFill=0;" edge="1" parent="1" source="Membership" target="RankingPosition">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge_6" value="agrupa" style="edgeStyle=none;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#8B8AAF;strokeWidth=1.4;fontFamily=Arial;fontSize=10;fontColor=#51647A;dashed=1;endArrow=open;endFill=0;" edge="1" parent="1" source="Guild" target="RankingPosition">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge_7" value="consulta streak" style="edgeStyle=none;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#8B8AAF;strokeWidth=1.4;fontFamily=Arial;fontSize=10;fontColor=#51647A;dashed=1;endArrow=open;endFill=0;" edge="1" parent="1" source="Streak" target="Summary">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge_8" value="consulta XP" style="edgeStyle=none;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#8B8AAF;strokeWidth=1.4;fontFamily=Arial;fontSize=10;fontColor=#51647A;dashed=1;endArrow=open;endFill=0;" edge="1" parent="1" source="Progress" target="Summary">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge_9" value="filtra" style="edgeStyle=none;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#8B8AAF;strokeWidth=1.4;fontFamily=Arial;fontSize=10;fontColor=#51647A;dashed=1;endArrow=open;endFill=0;" edge="1" parent="1" source="RankingFilter" target="RankingPosition">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="hdr24" value="PosiçãoRanking e ResumoProgresso são resultados de leitura, não tabelas de escrita nem entidades independentes." style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=middle;fontSize=12;fontStyle=0;fontColor=#5A6E85;fontFamily=Arial;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="54" y="1384" width="1766" height="36" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram id="07_Classes_por_Camada" name="07  Arquitetura em camadas">
+    <mxGraphModel dx="1400" dy="800" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="2002" pageHeight="1083" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="hdr2" value="QUESTIFY   /   UML   /   07  Arquitetura em camadas" style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=middle;fontSize=27;fontStyle=1;fontColor=#142B45;fontFamily=Arial;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="54" y="20" width="1894" height="42" as="geometry" />
+        </mxCell>
+        <mxCell id="hdr3" value="Fluxo de dependência de classes/módulos JavaScript" style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=middle;fontSize=15;fontStyle=0;fontColor=#59708A;fontFamily=Arial;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="54" y="63" width="1894" height="27" as="geometry" />
+        </mxCell>
+        <mxCell id="QuestRoute" value="&lt;div style=&quot;padding:3px 2px;&quot;&gt;&lt;div style=&quot;text-align:center;color:#24539F;font-size:11px;&quot;&gt;«RouteHandler»&lt;/div&gt;&lt;div style=&quot;text-align:center;font-size:16px;font-weight:bold;color:#18293E;&quot;&gt;QuestsRouteHandler&lt;/div&gt;&lt;/div&gt;&lt;div style=&quot;border-top:1px solid #A5C2ED;white-space:pre;text-align:left;padding:7px 5px;color:#364860;font-size:12px;&quot;&gt;- path: /api/v1/quests/*&lt;/div&gt;&lt;div style=&quot;border-top:1px solid #A5C2ED;white-space:pre;text-align:left;padding:7px 5px;color:#28636B;font-size:11px;&quot;&gt;+ POST complete(request)&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#A5C2ED;fontSize=13;fontFamily=Arial;align=center;verticalAlign=top;spacingTop=2;shadow=0;" vertex="1" parent="1">
+          <mxGeometry x="54.0" y="103.0" width="342.2" height="129.9" as="geometry" />
+        </mxCell>
+        <mxCell id="RewardsRoute" value="&lt;div style=&quot;padding:3px 2px;&quot;&gt;&lt;div style=&quot;text-align:center;color:#24539F;font-size:11px;&quot;&gt;«RouteHandler»&lt;/div&gt;&lt;div style=&quot;text-align:center;font-size:16px;font-weight:bold;color:#18293E;&quot;&gt;RewardsRouteHandler&lt;/div&gt;&lt;/div&gt;&lt;div style=&quot;border-top:1px solid #A5C2ED;white-space:pre;text-align:left;padding:7px 5px;color:#364860;font-size:12px;&quot;&gt;- path: /api/v1/rewards/*&lt;/div&gt;&lt;div style=&quot;border-top:1px solid #A5C2ED;white-space:pre;text-align:left;padding:7px 5px;color:#28636B;font-size:11px;&quot;&gt;+ POST redeem(request)&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#A5C2ED;fontSize=13;fontFamily=Arial;align=center;verticalAlign=top;spacingTop=2;shadow=0;" vertex="1" parent="1">
+          <mxGeometry x="692.6" y="103.0" width="342.2" height="129.9" as="geometry" />
+        </mxCell>
+        <mxCell id="AnalyticsRoute" value="&lt;div style=&quot;padding:3px 2px;&quot;&gt;&lt;div style=&quot;text-align:center;color:#24539F;font-size:11px;&quot;&gt;«RouteHandler»&lt;/div&gt;&lt;div style=&quot;text-align:center;font-size:16px;font-weight:bold;color:#18293E;&quot;&gt;AnalyticsRouteHandler&lt;/div&gt;&lt;/div&gt;&lt;div style=&quot;border-top:1px solid #A5C2ED;white-space:pre;text-align:left;padding:7px 5px;color:#364860;font-size:12px;&quot;&gt;- path: /api/v1/leaderboards&lt;/div&gt;&lt;div style=&quot;border-top:1px solid #A5C2ED;white-space:pre;text-align:left;padding:7px 5px;color:#28636B;font-size:11px;&quot;&gt;+ GET(request)&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#A5C2ED;fontSize=13;fontFamily=Arial;align=center;verticalAlign=top;spacingTop=2;shadow=0;" vertex="1" parent="1">
+          <mxGeometry x="1606.3" y="103.0" width="342.2" height="129.9" as="geometry" />
+        </mxCell>
+        <mxCell id="QuestService" value="&lt;div style=&quot;padding:3px 2px;&quot;&gt;&lt;div style=&quot;text-align:center;color:#086D52;font-size:11px;&quot;&gt;«service»&lt;/div&gt;&lt;div style=&quot;text-align:center;font-size:16px;font-weight:bold;color:#18293E;&quot;&gt;QuestService&lt;/div&gt;&lt;/div&gt;&lt;div style=&quot;border-top:1px solid #9BD9BE;white-space:pre;text-align:left;padding:7px 5px;color:#28636B;font-size:11px;&quot;&gt;+ completeQuest(id, userId, tx)&#10;+ extendDeadline(id, userId, tx)&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#9BD9BE;fontSize=13;fontFamily=Arial;align=center;verticalAlign=top;spacingTop=2;shadow=0;" vertex="1" parent="1">
+          <mxGeometry x="54.0" y="373.4" width="342.2" height="106.9" as="geometry" />
+        </mxCell>
+        <mxCell id="RewardsService" value="&lt;div style=&quot;padding:3px 2px;&quot;&gt;&lt;div style=&quot;text-align:center;color:#086D52;font-size:11px;&quot;&gt;«service»&lt;/div&gt;&lt;div style=&quot;text-align:center;font-size:16px;font-weight:bold;color:#18293E;&quot;&gt;RewardService&lt;/div&gt;&lt;/div&gt;&lt;div style=&quot;border-top:1px solid #9BD9BE;white-space:pre;text-align:left;padding:7px 5px;color:#28636B;font-size:11px;&quot;&gt;+ creditGoldForQuest(..., tx)&#10;+ redeemReward(..., tx)&#10;+ consumeItem(..., tx)&#10;+ getActiveEffects(..., tx)&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#9BD9BE;fontSize=13;fontFamily=Arial;align=center;verticalAlign=top;spacingTop=2;shadow=0;" vertex="1" parent="1">
+          <mxGeometry x="692.6" y="358.1" width="342.2" height="137.5" as="geometry" />
+        </mxCell>
+        <mxCell id="StreakService" value="&lt;div style=&quot;padding:3px 2px;&quot;&gt;&lt;div style=&quot;text-align:center;color:#086D52;font-size:11px;&quot;&gt;«service»&lt;/div&gt;&lt;div style=&quot;text-align:center;font-size:16px;font-weight:bold;color:#18293E;&quot;&gt;StreakService&lt;/div&gt;&lt;/div&gt;&lt;div style=&quot;border-top:1px solid #9BD9BE;white-space:pre;text-align:left;padding:7px 5px;color:#28636B;font-size:11px;&quot;&gt;+ registrarAtividade(..., tx)&#10;+ canRecoverStreak(..., tx)&#10;+ restoreStreak(..., tx)&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#9BD9BE;fontSize=13;fontFamily=Arial;align=center;verticalAlign=top;spacingTop=2;shadow=0;" vertex="1" parent="1">
+          <mxGeometry x="1218.2" y="365.8" width="342.2" height="122.2" as="geometry" />
+        </mxCell>
+        <mxCell id="AnalyticsService" value="&lt;div style=&quot;padding:3px 2px;&quot;&gt;&lt;div style=&quot;text-align:center;color:#086D52;font-size:11px;&quot;&gt;«service»&lt;/div&gt;&lt;div style=&quot;text-align:center;font-size:16px;font-weight:bold;color:#18293E;&quot;&gt;LeaderboardService&lt;/div&gt;&lt;/div&gt;&lt;div style=&quot;border-top:1px solid #9BD9BE;white-space:pre;text-align:left;padding:7px 5px;color:#28636B;font-size:11px;&quot;&gt;+ getLeaderboard(filtro)&#10;+ getSummary(userId)&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#9BD9BE;fontSize=13;fontFamily=Arial;align=center;verticalAlign=top;spacingTop=2;shadow=0;" vertex="1" parent="1">
+          <mxGeometry x="1606.3" y="373.4" width="342.2" height="106.9" as="geometry" />
+        </mxCell>
+        <mxCell id="QuestRepo" value="&lt;div style=&quot;padding:3px 2px;&quot;&gt;&lt;div style=&quot;text-align:center;color:#A3621A;font-size:11px;&quot;&gt;«repository»&lt;/div&gt;&lt;div style=&quot;text-align:center;font-size:16px;font-weight:bold;color:#18293E;&quot;&gt;QuestsRepository&lt;/div&gt;&lt;/div&gt;&lt;div style=&quot;border-top:1px solid #E8C08A;white-space:pre;text-align:left;padding:7px 5px;color:#28636B;font-size:11px;&quot;&gt;+ findById(id, tx)&#10;+ insertCompletion(..., tx)&#10;+ updateProgress(..., tx)&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#E8C08A;fontSize=13;fontFamily=Arial;align=center;verticalAlign=top;spacingTop=2;shadow=0;" vertex="1" parent="1">
+          <mxGeometry x="54.0" y="620.9" width="342.2" height="122.2" as="geometry" />
+        </mxCell>
+        <mxCell id="RewardsRepo" value="&lt;div style=&quot;padding:3px 2px;&quot;&gt;&lt;div style=&quot;text-align:center;color:#A3621A;font-size:11px;&quot;&gt;«repository»&lt;/div&gt;&lt;div style=&quot;text-align:center;font-size:16px;font-weight:bold;color:#18293E;&quot;&gt;RewardsRepository&lt;/div&gt;&lt;/div&gt;&lt;div style=&quot;border-top:1px solid #E8C08A;white-space:pre;text-align:left;padding:7px 5px;color:#28636B;font-size:11px;&quot;&gt;+ lockWallet(..., tx)&#10;+ appendLedger(..., tx)&#10;+ persistRedemption(..., tx)&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#E8C08A;fontSize=13;fontFamily=Arial;align=center;verticalAlign=top;spacingTop=2;shadow=0;" vertex="1" parent="1">
+          <mxGeometry x="830.1" y="620.9" width="342.2" height="122.2" as="geometry" />
+        </mxCell>
+        <mxCell id="StreakRepo" value="&lt;div style=&quot;padding:3px 2px;&quot;&gt;&lt;div style=&quot;text-align:center;color:#A3621A;font-size:11px;&quot;&gt;«repository»&lt;/div&gt;&lt;div style=&quot;text-align:center;font-size:16px;font-weight:bold;color:#18293E;&quot;&gt;StreakRepository&lt;/div&gt;&lt;/div&gt;&lt;div style=&quot;border-top:1px solid #E8C08A;white-space:pre;text-align:left;padding:7px 5px;color:#28636B;font-size:11px;&quot;&gt;+ getByUserId(..., tx)&#10;+ insertActivity(..., tx)&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#E8C08A;fontSize=13;fontFamily=Arial;align=center;verticalAlign=top;spacingTop=2;shadow=0;" vertex="1" parent="1">
+          <mxGeometry x="1218.2" y="628.6" width="342.2" height="106.9" as="geometry" />
+        </mxCell>
+        <mxCell id="AnalyticsRepo" value="&lt;div style=&quot;padding:3px 2px;&quot;&gt;&lt;div style=&quot;text-align:center;color:#A3621A;font-size:11px;&quot;&gt;«repository»&lt;/div&gt;&lt;div style=&quot;text-align:center;font-size:16px;font-weight:bold;color:#18293E;&quot;&gt;LeaderboardRepository&lt;/div&gt;&lt;/div&gt;&lt;div style=&quot;border-top:1px solid #E8C08A;white-space:pre;text-align:left;padding:7px 5px;color:#28636B;font-size:11px;&quot;&gt;+ queryRanking(filtro)&#10;+ querySummary(userId)&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#E8C08A;fontSize=13;fontFamily=Arial;align=center;verticalAlign=top;spacingTop=2;shadow=0;" vertex="1" parent="1">
+          <mxGeometry x="1606.3" y="628.6" width="342.2" height="106.9" as="geometry" />
+        </mxCell>
+        <mxCell id="Tx" value="&lt;div style=&quot;padding:3px 2px;&quot;&gt;&lt;div style=&quot;text-align:center;color:#A3621A;font-size:11px;&quot;&gt;«infra»&lt;/div&gt;&lt;div style=&quot;text-align:center;font-size:16px;font-weight:bold;color:#18293E;&quot;&gt;TransactionManager&lt;/div&gt;&lt;/div&gt;&lt;div style=&quot;border-top:1px solid #E8C08A;white-space:pre;text-align:left;padding:7px 5px;color:#28636B;font-size:11px;&quot;&gt;+ withTransaction(callback)&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#E8C08A;fontSize=13;fontFamily=Arial;align=center;verticalAlign=top;spacingTop=2;shadow=0;" vertex="1" parent="1">
+          <mxGeometry x="442.1" y="636.2" width="342.2" height="91.7" as="geometry" />
+        </mxCell>
+        <mxCell id="Postgres" value="&lt;div style=&quot;padding:3px 2px;&quot;&gt;&lt;div style=&quot;text-align:center;color:#5A4B9A;font-size:11px;&quot;&gt;«database»&lt;/div&gt;&lt;div style=&quot;text-align:center;font-size:16px;font-weight:bold;color:#18293E;&quot;&gt;PostgreSQL&lt;/div&gt;&lt;/div&gt;&lt;div style=&quot;border-top:1px solid #B9ACEA;white-space:pre;text-align:left;padding:7px 5px;color:#364860;font-size:12px;&quot;&gt;- 1 banco relacional&#10;- tabelas por domínio&lt;/div&gt;&lt;div style=&quot;border-top:1px solid #B9ACEA;white-space:pre;text-align:left;padding:7px 5px;color:#28636B;font-size:11px;&quot;&gt;+ COMMIT / ROLLBACK&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#B9ACEA;fontSize=13;fontFamily=Arial;align=center;verticalAlign=top;spacingTop=2;shadow=0;" vertex="1" parent="1">
+          <mxGeometry x="1024.1" y="868.4" width="342.2" height="146.7" as="geometry" />
+        </mxCell>
+        <mxCell id="edge_0" value="chama" style="edgeStyle=none;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#8B8AAF;strokeWidth=1.4;fontFamily=Arial;fontSize=10;fontColor=#51647A;dashed=1;endArrow=open;endFill=0;" edge="1" parent="1" source="QuestRoute" target="QuestService">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge_1" value="chama" style="edgeStyle=none;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#8B8AAF;strokeWidth=1.4;fontFamily=Arial;fontSize=10;fontColor=#51647A;dashed=1;endArrow=open;endFill=0;" edge="1" parent="1" source="RewardsRoute" target="RewardsService">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge_2" value="chama" style="edgeStyle=none;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#8B8AAF;strokeWidth=1.4;fontFamily=Arial;fontSize=10;fontColor=#51647A;dashed=1;endArrow=open;endFill=0;" edge="1" parent="1" source="AnalyticsRoute" target="AnalyticsService">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge_3" value="persiste" style="edgeStyle=none;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#8B8AAF;strokeWidth=1.4;fontFamily=Arial;fontSize=10;fontColor=#51647A;dashed=1;endArrow=open;endFill=0;" edge="1" parent="1" source="QuestService" target="QuestRepo">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge_4" value="persiste" style="edgeStyle=none;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#8B8AAF;strokeWidth=1.4;fontFamily=Arial;fontSize=10;fontColor=#51647A;dashed=1;endArrow=open;endFill=0;" edge="1" parent="1" source="RewardsService" target="RewardsRepo">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge_5" value="persiste" style="edgeStyle=none;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#8B8AAF;strokeWidth=1.4;fontFamily=Arial;fontSize=10;fontColor=#51647A;dashed=1;endArrow=open;endFill=0;" edge="1" parent="1" source="StreakService" target="StreakRepo">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge_6" value="consulta" style="edgeStyle=none;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#8B8AAF;strokeWidth=1.4;fontFamily=Arial;fontSize=10;fontColor=#51647A;dashed=1;endArrow=open;endFill=0;" edge="1" parent="1" source="AnalyticsService" target="AnalyticsRepo">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge_7" value="credita Gold" style="edgeStyle=none;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#8B8AAF;strokeWidth=1.4;fontFamily=Arial;fontSize=10;fontColor=#51647A;dashed=1;endArrow=open;endFill=0;" edge="1" parent="1" source="QuestService" target="RewardsService">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge_8" value="registra atividade" style="edgeStyle=none;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#8B8AAF;strokeWidth=1.4;fontFamily=Arial;fontSize=10;fontColor=#51647A;dashed=1;endArrow=open;endFill=0;" edge="1" parent="1" source="QuestService" target="StreakService">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge_9" value="recupera sequência" style="edgeStyle=none;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#8B8AAF;strokeWidth=1.4;fontFamily=Arial;fontSize=10;fontColor=#51647A;dashed=1;endArrow=open;endFill=0;" edge="1" parent="1" source="RewardsService" target="StreakService">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge_10" value="mesmo tx" style="edgeStyle=none;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#8B8AAF;strokeWidth=1.4;fontFamily=Arial;fontSize=10;fontColor=#51647A;dashed=1;endArrow=open;endFill=0;" edge="1" parent="1" source="QuestService" target="Tx">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge_11" value="mesmo tx" style="edgeStyle=none;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#8B8AAF;strokeWidth=1.4;fontFamily=Arial;fontSize=10;fontColor=#51647A;dashed=1;endArrow=open;endFill=0;" edge="1" parent="1" source="RewardsService" target="Tx">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge_12" value="SQL" style="edgeStyle=none;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#8B8AAF;strokeWidth=1.4;fontFamily=Arial;fontSize=10;fontColor=#51647A;dashed=1;endArrow=open;endFill=0;" edge="1" parent="1" source="QuestRepo" target="Postgres">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge_13" value="SQL" style="edgeStyle=none;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#8B8AAF;strokeWidth=1.4;fontFamily=Arial;fontSize=10;fontColor=#51647A;dashed=1;endArrow=open;endFill=0;" edge="1" parent="1" source="RewardsRepo" target="Postgres">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge_14" value="SQL" style="edgeStyle=none;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#8B8AAF;strokeWidth=1.4;fontFamily=Arial;fontSize=10;fontColor=#51647A;dashed=1;endArrow=open;endFill=0;" edge="1" parent="1" source="StreakRepo" target="Postgres">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge_15" value="SQL" style="edgeStyle=none;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#8B8AAF;strokeWidth=1.4;fontFamily=Arial;fontSize=10;fontColor=#51647A;dashed=1;endArrow=open;endFill=0;" edge="1" parent="1" source="AnalyticsRepo" target="Postgres">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="hdr33" value="Stereotypes representam contratos/módulos JS; não exigem a palavra-chave class. Next.js é o único servidor Node.js." style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=middle;fontSize=12;fontStyle=0;fontColor=#5A6E85;fontFamily=Arial;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="54" y="1025" width="1894" height="36" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
