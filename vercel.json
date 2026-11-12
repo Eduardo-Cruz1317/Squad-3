@@ -1,4 +1,8 @@
 {
   "framework": null,
-  "outputDirectory": "frontend/dist"
+  "outputDirectory": "frontend/dist",
+  "rewrites": [
+    { "source": "/guilds", "destination": "/guilds.html" },
+    { "source": "/guilds/:id", "destination": "/guild-detail.html" }
+  ]
 }

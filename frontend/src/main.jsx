@@ -53,7 +53,7 @@ function AuthCard({ registering }) {
       } else {
         localStorage.setItem('questify_access_token', data.accessToken);
         localStorage.setItem('questify_refresh_token', data.refreshToken);
-        window.location.href = 'dashboard.html';
+        window.location.href = '/guilds';
       }
     } catch (submitError) {
       setError(submitError.message || 'Erro ao conectar com o servidor.');
