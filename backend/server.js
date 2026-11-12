@@ -171,7 +171,9 @@ const server = createServer(async (req, res) => {
     res.writeHead(400);
     return res.end();
   }
-  const relativePath = pathname === '/' ? 'index.html' : pathname.replace(/^\/+/, '');
+  let relativePath = pathname === '/' ? 'index.html' : pathname.replace(/^\/+/, '');
+  if (pathname === '/guilds' || pathname === '/guilds/') relativePath = 'guilds.html';
+  if (/^\/guilds\/\d+\/?$/.test(pathname)) relativePath = 'guild-detail.html';
   const filePath = resolve(frontendRoot, relativePath);
   if (filePath !== frontendRoot && !filePath.startsWith(frontendRoot + sep)) {
     res.writeHead(403);

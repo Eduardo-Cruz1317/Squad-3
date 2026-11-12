@@ -30,6 +30,38 @@ body {
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
 }
 
+.page-container {
+    width: 100%;
+    min-height: 100vh;
+    padding: 1.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.guild-card {
+    background: #1e293b;
+    padding: 2.5rem;
+    border-radius: 12px;
+    width: 100%;
+    max-width: 520px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+}
+
+.guild-card h1 {
+    color: #38bdf8;
+    margin-bottom: 0.5rem;
+}
+
+.eyebrow {
+    color: #7dd3fc;
+    font-size: 0.8rem;
+    font-weight: bold;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-bottom: 0.75rem;
+}
+
 .auth-card h2 {
     font-size: 2rem;
     margin-bottom: 0.5rem;
@@ -68,6 +100,38 @@ body {
 .input-group input:focus {
     outline: none;
     border-color: #38bdf8;
+}
+
+.input-group select {
+    width: 100%;
+    padding: 0.75rem;
+    border-radius: 6px;
+    border: 1px solid #334155;
+    background: #0f172a;
+    color: #fff;
+    font-size: 1rem;
+}
+
+.input-group select:focus {
+    outline: none;
+    border-color: #38bdf8;
+}
+
+.input-group select:disabled {
+    cursor: wait;
+    opacity: 0.7;
+}
+
+.input-group.has-error input,
+.input-group.has-error select {
+    border-color: #f87171;
+}
+
+.field-error {
+    display: block;
+    color: #fca5a5;
+    font-size: 0.8rem;
+    margin-top: 0.35rem;
 }
 
 .btn-primary {
@@ -123,6 +187,35 @@ body {
 .btn-primary:disabled {
     cursor: wait;
     opacity: 0.7;
+}
+
+.btn-link {
+    display: block;
+    text-align: center;
+    text-decoration: none;
+}
+
+.guild-summary {
+    margin: 1.5rem 0;
+    display: grid;
+    gap: 0.75rem;
+}
+
+.guild-summary div {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    border-bottom: 1px solid #334155;
+    padding-bottom: 0.5rem;
+}
+
+.guild-summary dt {
+    color: #94a3b8;
+}
+
+.guild-summary dd {
+    color: #f8fafc;
+    font-weight: bold;
 }
 
 .hidden {

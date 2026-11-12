@@ -17,6 +17,8 @@ export default defineConfig({
       input: {
         login: resolve(frontendRoot, 'index.html'),
         register: resolve(frontendRoot, 'register.html'),
+        guilds: resolve(frontendRoot, 'guilds.html'),
+        guildDetail: resolve(frontendRoot, 'guild-detail.html'),
       },
     },
   },
