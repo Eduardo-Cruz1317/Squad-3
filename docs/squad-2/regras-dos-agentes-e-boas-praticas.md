@@ -83,7 +83,9 @@ Atingido isso, **pare**. Não "aproveite para melhorar" outra coisa. Ideias extr
 - No React, nunca `dangerouslySetInnerHTML` com dados de usuário.
 
 ### 2.4 Testes
-- Toda regra nova vem com teste no mesmo trabalho (`node --test`, pastas `tests/unit` e `tests/presentation`).
+- Testes com **Jest** (definido pela turma): arquivos `*.spec.js` em `tests/unit`, `tests/presentation` e `tests/persistence`.
+  `npm test` roda o Jest e também os testes antigos em `node --test` (`*.test.js`) das squads que ainda não migraram.
+- Toda regra nova vem com teste no mesmo trabalho. Use `describe`/`test.each` para agrupar casos e `jest.fn()` para dependências falsas.
 - Testar o caminho feliz **e** os erros: vazio, limite exato, limite + 1, tipo errado, sem login.
 - Teste não depende de banco real nem de internet: usar repositório em memória ou banco de teste local.
 - Teste com nome que descreve o comportamento: `"categoria inexistente -> 400 em categoryId"`.
