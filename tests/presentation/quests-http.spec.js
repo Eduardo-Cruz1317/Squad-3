@@ -1,5 +1,10 @@
 // Squad 2 — adaptador HTTP da Vercel/servidor local (api/_lib/quests-http.js) (Jest).
 // Só cenários que não chegam ao banco: método errado e cabeçalhos da resposta.
+jest.mock('../../src/business/application/quests/quest.service.js', () => ({
+  createQuest: jest.fn(),
+  listQuestCategories: jest.fn(),
+}));
+const service = require('../../src/business/application/quests/quest.service.js');
 const { quests, categories } = require('../../api/_lib/quests-http.js');
 
 function fakeResponse() {
@@ -31,5 +36,47 @@ describe('quests-http (adaptador)', () => {
     const res = fakeResponse();
     await quests({ method: 'PUT', headers: {} }, res);
     expect(res.headers['content-length']).toBe(Buffer.byteLength(JSON.stringify(res.body)));
+  });
+
+  describe('cabeçalho final (rota + adaptador, serviço falso, sem banco)', () => {
+    const PUBLICO = 'public, s-maxage=300, stale-while-revalidate=600';
+    let errorSpy;
+    beforeEach(() => {
+      jest.clearAllMocks();
+      errorSpy = jest.spyOn(console, 'error').mockImplementation(() => {});
+    });
+    afterEach(() => errorSpy.mockRestore());
+
+    test('GET categorias 200 -> Cache-Control público', async () => {
+      service.listQuestCategories.mockResolvedValue([{ id: 1 }]);
+      const res = fakeResponse();
+      await categories({ method: 'GET', headers: {} }, res);
+      expect(res.statusCode).toBe(200);
+      expect(res.headers['cache-control']).toBe(PUBLICO);
+      expect(res.headers['content-type']).toBe('application/json; charset=utf-8');
+    });
+
+    test('GET categorias com serviço lançando erro -> 500 no-store', async () => {
+      service.listQuestCategories.mockRejectedValue(new Error('falha'));
+      const res = fakeResponse();
+      await categories({ method: 'GET', headers: {} }, res);
+      expect(res.statusCode).toBe(500);
+      expect(res.headers['cache-control']).toBe('no-store');
+    });
+
+    test('categorias 405 -> no-store', async () => {
+      const res = fakeResponse();
+      await categories({ method: 'POST', headers: {} }, res);
+      expect(res.statusCode).toBe(405);
+      expect(res.headers['cache-control']).toBe('no-store');
+    });
+
+    test('POST /quests sem token -> 401 no-store, sem chamar o serviço', async () => {
+      const res = fakeResponse();
+      await quests({ method: 'POST', headers: {}, body: {} }, res);
+      expect(res.statusCode).toBe(401);
+      expect(res.headers['cache-control']).toBe('no-store');
+      expect(service.createQuest).not.toHaveBeenCalled();
+    });
   });
 });

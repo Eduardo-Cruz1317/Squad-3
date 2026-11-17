@@ -22,6 +22,9 @@ const BODY_ERRORS = Object.freeze({
   too_large: { status: 413, code: 'PAYLOAD_TOO_LARGE', message: 'A requisição excede o tamanho permitido.' },
 });
 
+// Lista pública de referência: a CDN guarda 5 min e pode servir a cópia velha por mais 10 min enquanto revalida.
+const CATEGORIES_CACHE_CONTROL = 'public, s-maxage=300, stale-while-revalidate=600';
+
 const json = (status, body, headers) => ({ status, body, ...(headers ? { headers } : {}) });
 
 const methodNotAllowed = (allow) =>
@@ -103,7 +106,7 @@ export function createQuestsRoute({
   async function categories({ method } = {}) {
     if (method !== 'GET') return methodNotAllowed('GET');
     try {
-      return json(200, { categories: await listQuestCategories() });
+      return json(200, { categories: await listQuestCategories() }, { 'Cache-Control': CATEGORIES_CACHE_CONTROL });
     } catch (error) {
       return errorResponse(error);
     }

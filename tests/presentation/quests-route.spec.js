@@ -201,4 +201,42 @@ describe('rota + serviço', () => {
     expect(res.body.categories).toHaveLength(3);
     expect((await route.create({ method: 'POST', headers: {}, body: BODY })).status).toBe(401);
   });
+
+  describe('Cache-Control', () => {
+    const CDN_CACHE = 'public, s-maxage=300, stale-while-revalidate=600';
+    const service = () =>
+      createQuestService({ repository: memoryRepository(), withTransaction: (work) => work('TX'), today: () => TODAY });
+
+    test('GET categorias 200 -> cache público de CDN', async () => {
+      const route = createQuestsRoute({ requireUser: rejectAuth, ...service() });
+      const res = await route.categories({ method: 'GET', headers: {} });
+      expect(res.status).toBe(200);
+      expect(res.headers['Cache-Control']).toBe(CDN_CACHE);
+    });
+
+    test('GET categorias com erro 405 e 500 -> sem cabeçalho de cache (o adaptador aplica no-store)', async () => {
+      const spy = jest.spyOn(console, 'error').mockImplementation(() => {});
+      const failing = createQuestsRoute({ listQuestCategories: jest.fn(async () => { throw new Error('db fora'); }) });
+      const res500 = await failing.categories({ method: 'GET', headers: {} });
+      expect(res500.status).toBe(500);
+      expect(res500.headers?.['Cache-Control']).toBeUndefined();
+      spy.mockRestore();
+      const res405 = await failing.categories({ method: 'POST', headers: {} });
+      expect(res405.status).toBe(405);
+      expect(res405.headers['Cache-Control']).toBeUndefined();
+    });
+
+    test('POST /quests (201, 400, 401, 405) nunca define cache público', async () => {
+      const route = createQuestsRoute({ requireUser: authenticated, ...service() });
+      const unauth = createQuestsRoute({ requireUser: rejectAuth, ...service() });
+      const responses = [
+        await route.create({ method: 'POST', headers: AUTH, body: BODY }),
+        await route.create({ method: 'POST', headers: AUTH, body: { ...BODY, title: 123 } }),
+        await unauth.create({ method: 'POST', headers: {}, body: BODY }),
+        await route.create({ method: 'GET', headers: AUTH }),
+      ];
+      expect(responses.map((r) => r.status)).toEqual([201, 400, 401, 405]);
+      for (const res of responses) expect(res.headers?.['Cache-Control']).toBeUndefined();
+    });
+  });
 });
