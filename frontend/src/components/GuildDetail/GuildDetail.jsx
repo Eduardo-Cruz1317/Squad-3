@@ -25,6 +25,7 @@ export default function GuildDetail() {
 
   if (!state) return null;
   const { guildId, guild } = state;
+  const category = guild?.categoryName ?? guild?.categoryId ?? guild?.category_id;
 
   return (
     <section className={styles.card} aria-labelledby="guild-detail-title">
@@ -35,10 +36,10 @@ export default function GuildDetail() {
       </p>
       <dl className={styles.summary}>
         <div><dt>ID da guilda</dt><dd>{guildId}</dd></div>
-        {guild?.categoryId && <div><dt>Categoria</dt><dd>{guild.categoryId}</dd></div>}
+        {category && <div><dt>Categoria</dt><dd>{category}</dd></div>}
         <div><dt>Seu papel</dt><dd>Administrador</dd></div>
       </dl>
-      <Button href="/guilds" block>Criar outra guilda</Button>
+      <Button href="/guilds?criar=1" block>Criar outra guilda</Button>
     </section>
   );
 }

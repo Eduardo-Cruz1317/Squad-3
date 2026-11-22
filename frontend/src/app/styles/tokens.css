@@ -13,7 +13,8 @@
   --color-success: #2e9e6b;
   --color-white: #ffffff;
   --color-error: #b3261e; /* variável "error" do Figma: Sair, erros, coração curtido */
-  --color-overlay: rgba(15, 42, 85, 0.45); /* fundo escurecido azulado (ink) de modal/menu */
+  --color-error-soft: #fdecea; /* derivado (não está no Figma): fundo de mensagens de erro gerais */
+  --color-overlay: rgba(15, 42, 85, 0.55); /* "Fundo escurecido" do modal (58:1289) */
 
   /* Tipografia */
   --font-heading: var(--font-sora), system-ui, sans-serif;
@@ -40,11 +41,13 @@
   --radius-sm: 4px;  /* chips/tags */
   --radius-md: 6px;  /* botões, campos, aba da pasta */
   --radius-lg: 8px;  /* cards */
+  --radius-modal: 10px; /* modal desktop */
   --radius-xl: 16px; /* topo do bottom sheet */
   --radius-full: 999px;
 
   /* Sombras */
   --shadow-menu: 0 8px 24px rgba(15, 41, 84, 0.14);
+  --shadow-modal: 0 16px 40px rgba(15, 41, 84, 0.25);
 
   /* Espaçamentos */
   --space-1: 4px;

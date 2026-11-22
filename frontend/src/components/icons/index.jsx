@@ -193,6 +193,27 @@ export const RefreshIcon = (props) => (
   </StrokeIcon>
 );
 
+/** Lupa da busca de guildas (18×18) e do estado "Nenhuma guilda encontrada". */
+export const SearchIcon = (props) => (
+  <StrokeIcon size={18} {...props}>
+    <path d="M14.25 8.25C14.25 11.5637 11.5637 14.25 8.25 14.25C4.93629 14.25 2.25 11.5637 2.25 8.25C2.25 4.93629 4.93629 2.25 8.25 2.25C11.5637 2.25 14.25 4.93629 14.25 8.25Z" />
+    <path d="M15.75 15.75L12.525 12.525" />
+  </StrokeIcon>
+);
+
+/** Seta do select (18×18). */
+export const SelectChevronIcon = (props) => (
+  <StrokeIcon size={18} strokeWidth={2} {...props}><path d="M4.5 6.75L9 11.25L13.5 6.75" /></StrokeIcon>
+);
+
+/** Medalha do aviso "Você será o administrador..." (16×16). */
+export const AwardIcon = (props) => (
+  <StrokeIcon size={16} {...props}>
+    <path d="M12 5.33333C12 7.54247 10.2091 9.33333 8 9.33333C5.79086 9.33333 4 7.54247 4 5.33333C4 3.12419 5.79086 1.33333 8 1.33333C10.2091 1.33333 12 3.12419 12 5.33333Z" />
+    <path d="M10.318 8.59333L11.3333 14.6667L8 12.6667L4.66667 14.6667L5.682 8.59333" />
+  </StrokeIcon>
+);
+
 export const ChatIcon = (props) => (
   <StrokeIcon size={16} {...props}>
     <path d="M14 10C14 10.3536 13.8595 10.6928 13.6095 10.9428C13.3594 11.1929 13.0203 11.3333 12.6667 11.3333H4.66667L2 14V3.33333C2 2.97971 2.14048 2.64057 2.39052 2.39052C2.64057 2.14048 2.97971 2 3.33333 2H12.6667C13.0203 2 13.3594 2.14048 13.6095 2.39052C13.8595 2.64057 14 2.97971 14 3.33333V10Z" />
