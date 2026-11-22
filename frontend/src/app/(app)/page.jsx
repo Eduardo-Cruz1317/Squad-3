@@ -1,8 +1,7 @@
-import StubPage from '@/components/StubPage/StubPage';
+import HomeScreen from '@/components/HomeScreen/HomeScreen';
 
-// Provisório (Fase 1): a tela Início é implementada na Fase 2.
-export const metadata = { title: { absolute: 'Questify' } };
+export const metadata = { title: { absolute: 'Início · Questify' } };
 
 export default function HomePage() {
-  return <StubPage title="Início" />;
+  return <HomeScreen />;
 }

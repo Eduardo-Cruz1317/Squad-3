@@ -61,6 +61,12 @@
   cursor: progress;
 }
 
+.lg {
+  min-height: 46px;
+  padding: 11px 19px;
+  font-size: var(--text-lg);
+}
+
 .block {
   display: flex;
   width: 100%;

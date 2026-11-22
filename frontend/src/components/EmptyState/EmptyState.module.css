@@ -1,9 +1,10 @@
+/* Frames 272:326 e 272:578: painel branco, padding 56/24, gap 14, ícone em círculo sky de 56px. */
 .panel {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: var(--space-2);
-  padding: var(--space-10) var(--space-5);
+  gap: 14px;
+  padding: 56px var(--space-6);
   background: var(--color-white);
   border: 1px solid var(--color-line);
   border-radius: var(--radius-lg);
@@ -16,23 +17,27 @@
   justify-content: center;
   width: 56px;
   height: 56px;
-  margin-bottom: var(--space-2);
   border-radius: var(--radius-full);
   background: var(--color-sky);
   color: var(--color-primary);
+}
+
+.iconError {
+  color: var(--color-error);
 }
 
 .title {
   font-family: var(--font-heading);
   font-size: var(--text-2xl);
   font-weight: var(--weight-semibold);
+  line-height: normal;
   color: var(--color-ink);
 }
 
 .description {
-  max-width: 340px;
-  font-size: var(--text-base);
-  line-height: 20px;
+  max-width: 460px;
+  font-size: var(--text-lg);
+  line-height: normal;
   color: var(--color-muted);
 }
 
@@ -41,5 +46,4 @@
   flex-wrap: wrap;
   justify-content: center;
   gap: var(--space-2);
-  margin-top: var(--space-2);
 }
