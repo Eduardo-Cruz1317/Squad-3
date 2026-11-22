@@ -15,7 +15,7 @@ const DESCRIPTION_MAX = 200;
 const CREATED_GUILD_KEY = 'questify_created_guild';
 
 const MESSAGES = {
-  name: 'O nome da guilda deve ter entre 3 e 50 caracteres.',
+  name: 'O nome da guilda deve ter entre 3 e 30 caracteres.',
   categoryId: 'Selecione uma categoria válida.',
   duplicate: 'Este nome de guilda já está em uso, escolha outro.',
   generic: 'Não foi possível criar a guilda.',
