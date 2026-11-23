@@ -231,6 +231,7 @@
 .q-message { padding: 10px 12px; border-radius: 6px; font-size: 14px; }
 .q-message-erro { background: var(--q-danger-soft); color: var(--q-danger); }
 .q-message-sucesso { background: var(--q-ok-soft); color: #1e7a46; }
+.q-message-aviso { background: var(--q-gold-soft); color: var(--q-gold-ink); }
 
 .q-notice { align-items: flex-start; }
 .q-notice p { margin: 0; }

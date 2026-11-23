@@ -79,6 +79,7 @@ export default function NovaQuest() {
   const [carregando, setCarregando] = useState(true);
   const [semSessao, setSemSessao] = useState(!MODO_DEMONSTRACAO && !getToken());
   const [falhaCarga, setFalhaCarga] = useState('');
+  const [usandoExemplo, setUsandoExemplo] = useState(false);
   const [dados, setDados] = useState(VAZIO);
   const [erros, setErros] = useState({});
   const [mensagem, setMensagem] = useState(null);
@@ -92,8 +93,10 @@ export default function NovaQuest() {
     listQuestCategories()
       .then(setCategorias)
       .catch((erro) => {
-        if (MODO_DEMONSTRACAO) setCategorias(CATEGORIAS_EXEMPLO);
-        else if (erro instanceof ApiError && erro.status === 401) setSemSessao(true);
+        if (MODO_DEMONSTRACAO) {
+          setCategorias(CATEGORIAS_EXEMPLO);
+          setUsandoExemplo(true);
+        } else if (erro instanceof ApiError && erro.status === 401) setSemSessao(true);
         else setFalhaCarga('Não foi possível carregar as categorias. Tente novamente.');
       })
       .finally(() => setCarregando(false));
@@ -170,6 +173,11 @@ export default function NovaQuest() {
             <form className="q-card q-form" onSubmit={enviar} noValidate>
               <h2>Dados da quest</h2>
 
+              {usandoExemplo && (
+                <div className="q-message q-message-aviso" role="status">
+                  Não foi possível carregar as categorias do servidor. Mostrando categorias de exemplo.
+                </div>
+              )}
               <Campo id="categoryId" rotulo="Categoria" erro={erros.categoryId}>
                 <select
                   id="categoryId"
