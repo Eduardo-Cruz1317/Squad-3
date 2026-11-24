@@ -18,13 +18,13 @@ Todo trabalho começa com uma lista curta e verificável do que precisa ser verd
 - [ ] `POST /api/v1/quests` cria a quest com status `pendente`, dono da sessão e XP da categoria.
 - [ ] Sem login → 401; dados inválidos → 400 com o campo; outros métodos → 405.
 - [ ] A tela mostra os erros por campo e a mensagem de sucesso.
-- [ ] `npm test` passa e os testes que já passavam continuam passando.
+- [ ] `npm test` e `npm run test:jest` passam, e os testes que já passavam continuam passando.
 
 Se o pedido não permite escrever essa lista (requisito ambíguo), o agente **para e pergunta** antes de codificar.
 
 ### 1.2 Pare com sucesso quando
 1. Todos os itens do critério de pronto foram verificados com evidência real (saída de teste, status HTTP, tela).
-2. A suíte inteira (`npm test`) passa, não só os testes novos.
+2. As suítes inteiras (`npm test` e `npm run test:jest`) passam, não só os testes novos.
 3. Nenhum arquivo fora do escopo foi alterado (`git status` / `git diff --stat` conferidos).
 
 Atingido isso, **pare**. Não "aproveite para melhorar" outra coisa. Ideias extras viram **pendências** no relatório.
@@ -83,8 +83,8 @@ Atingido isso, **pare**. Não "aproveite para melhorar" outra coisa. Ideias extr
 - No React, nunca `dangerouslySetInnerHTML` com dados de usuário.
 
 ### 2.4 Testes
-- Testes com **Jest** (definido pela turma): arquivos `*.spec.js` em `tests/unit`, `tests/presentation` e `tests/persistence`.
-  `npm test` roda o Jest e também os testes antigos em `node --test` (`*.test.js`) das squads que ainda não migraram.
+- Testes com **Jest** (definido pela turma), no padrão da main: arquivos `*.jest.mjs` em `tests/`, importando de
+  `@jest/globals`; rodar com `npm run test:jest` (ESM nativo, `jest.config.mjs`). `npm test` roda os testes antigos em `node --test`.
 - Toda regra nova vem com teste no mesmo trabalho. Use `describe`/`test.each` para agrupar casos e `jest.fn()` para dependências falsas.
 - Testar o caminho feliz **e** os erros: vazio, limite exato, limite + 1, tipo errado, sem login.
 - Teste não depende de banco real nem de internet: usar repositório em memória ou banco de teste local.

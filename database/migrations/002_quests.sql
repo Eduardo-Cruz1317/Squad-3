@@ -5,9 +5,9 @@
 -- Pré-requisito: public.users (migration de autenticação:
 -- supabase/migrations/20261029000000_create_auth_tables.sql).
 --
--- Para aplicar: SQL Editor do Supabase, ou copiar este arquivo para
--- supabase/migrations/20261112000000_create_quest_tables.sql e rodar
--- `supabase db push` (o CLI só lê a pasta supabase/migrations).
+-- Fonte original em database/migrations; espelhado em
+-- supabase/migrations/20261112000000_create_quest_tables.sql para o CLI
+-- aplicar com `supabase db push`. Idempotente (já aplicado no Supabase em 12/11/2026).
 --
 -- ESCOPO DESTA CAMADA: apenas integridade estrutural (PK, FK, NOT NULL,
 -- UNIQUE e domínio de valores de coluna). As regras de negócio moram em:
