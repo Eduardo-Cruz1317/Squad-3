@@ -222,6 +222,10 @@ Simulam a navegação de um usuário real no frontend Next.js (em ambiente Chrom
   - **Login:** Preenche credenciais em `/login`, valida o armazenamento do token (`questify_access_token`) no `localStorage` e verifica o redirecionamento para a página inicial (`/`).
   - **Validação de Cadastro:** Impede o envio do formulário em `/register` quando a senha não atende aos critérios de segurança exigidos.
   - **Criação de Conta:** Simula o cadastro válido em `/register`, exibe a mensagem de confirmação e verifica o redirecionamento automático para `/login`.
+- **`tests/e2e/guild-creation-e2e.spec.mjs`**:
+  - **Criação:** Simula categorias e criação pela API, verifica o token enviado, a normalização do nome e a confirmação com categoria e papel de administrador.
+  - **Validação:** Confirma que campos inválidos exibem erros e não enviam a requisição.
+  - **Conflito:** Confirma que um nome já utilizado exibe a mensagem de conflito sem fechar o formulário.
 
 **Pré-requisito (apenas na primeira execução na máquina):**
 ```bash

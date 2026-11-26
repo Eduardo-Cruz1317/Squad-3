@@ -42,6 +42,27 @@ describe('Serviço de Guildas (guild.service)', () => {
       .rejects.toThrow(UnauthenticatedError);
   });
 
+  test('lança ValidationError antes da transação quando os dados da guilda são inválidos', async () => {
+    const repository = {
+      findCategoryById: jest.fn(),
+      findByName: jest.fn(),
+      createGuildWithAdmin: jest.fn(),
+    };
+    const withTransaction = jest.fn();
+    const service = createGuildService({ repository, withTransaction });
+
+    await expect(service.createGuild({ name: 'ab', categoryId: 1 }, 7))
+      .rejects.toMatchObject({
+        name: 'ValidationError',
+        fields: { name: expect.any(String) },
+      });
+
+    expect(withTransaction).not.toHaveBeenCalled();
+    expect(repository.findCategoryById).not.toHaveBeenCalled();
+    expect(repository.findByName).not.toHaveBeenCalled();
+    expect(repository.createGuildWithAdmin).not.toHaveBeenCalled();
+  });
+
   test('lança ConflictError quando já existe guilda com o mesmo nome', async () => {
     const repository = {
       findCategoryById: jest.fn().mockResolvedValue({ id: 1 }),
