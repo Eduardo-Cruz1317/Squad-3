@@ -10,11 +10,17 @@ export const GUILD_CREATOR_ROLE = GUILD_ROLES.ADMIN;
 
 export const GUILD_ERROR_CODES = Object.freeze({ NAME_ALREADY_USED: 'GUILD_NAME_ALREADY_USED' });
 
+// Issue "Visualizar guildas disponíveis": página de até 20 guildas por vez.
+export const GUILD_LISTING_DEFAULT_LIMIT = 20;
+export const GUILD_LISTING_MAX_LIMIT = 20;
+
 export const GUILD_MESSAGES = Object.freeze({
   NAME_LENGTH: `O nome da guilda deve ter entre ${GUILD_NAME_MIN_LENGTH} e ${GUILD_NAME_MAX_LENGTH} caracteres.`,
   CATEGORY_REQUIRED: 'Selecione uma categoria válida.',
   CATEGORY_INVALID: 'Selecione uma categoria válida.',
   NAME_ALREADY_USED: 'Este nome de guilda já está em uso, escolha outro.',
+  LIMIT_INVALID: `O limite deve ser um número inteiro entre 1 e ${GUILD_LISTING_MAX_LIMIT}.`,
+  OFFSET_INVALID: 'O offset deve ser um número inteiro maior ou igual a 0.',
 });
 
 /** NFC + espaços colapsados + trim, para que "Física  Básica " e "Física Básica" sejam o mesmo nome. */
@@ -53,4 +59,39 @@ export function validateGuildInput(payload) {
 
   if (Object.keys(errors).length > 0) return { value: null, errors };
   return { value: { name: normalizeGuildName(input.name), categoryId }, errors: null };
+}
+
+/**
+ * Valida e normaliza `{ search, limit, offset }` da listagem de guildas disponíveis.
+ * `search`/`limit`/`offset` chegam como texto (query string) ou ausentes; ausentes ou
+ * vazios usam o padrão (sem busca, limite 20, offset 0). Presentes e inválidos são erro.
+ */
+export function validateListAvailableGuildsInput(params) {
+  const input = params && typeof params === 'object' && !Array.isArray(params) ? params : {};
+  const errors = {};
+
+  let limit = GUILD_LISTING_DEFAULT_LIMIT;
+  if (input.limit !== undefined && input.limit !== '') {
+    const parsedLimit = Number(input.limit);
+    if (!Number.isInteger(parsedLimit) || parsedLimit < 1 || parsedLimit > GUILD_LISTING_MAX_LIMIT) {
+      errors.limit = GUILD_MESSAGES.LIMIT_INVALID;
+    } else {
+      limit = parsedLimit;
+    }
+  }
+
+  let offset = 0;
+  if (input.offset !== undefined && input.offset !== '') {
+    const parsedOffset = Number(input.offset);
+    if (!Number.isInteger(parsedOffset) || parsedOffset < 0) {
+      errors.offset = GUILD_MESSAGES.OFFSET_INVALID;
+    } else {
+      offset = parsedOffset;
+    }
+  }
+
+  if (Object.keys(errors).length > 0) return { value: null, errors };
+
+  const search = typeof input.search === 'string' ? normalizeGuildName(input.search) || null : null;
+  return { value: { search, limit, offset }, errors: null };
 }
