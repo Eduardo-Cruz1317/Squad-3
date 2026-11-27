@@ -52,6 +52,39 @@ export async function listCategories(db = getPool()) {
   return rows.map(toCategory);
 }
 
+const toAvailableGuild = (row) => ({
+  id: Number(row.id),
+  name: row.name,
+  categoryId: Number(row.category_id),
+  categoryName: row.category_name,
+  memberCount: Number(row.member_count),
+  createdAt: row.created_at,
+});
+
+/**
+ * Guildas "disponíveis" (ativas e públicas) para a tela de descoberta.
+ * `search` (opcional) filtra por nome, sem diferenciar maiúsculas/minúsculas.
+ * Pede `limit + 1` linhas para descobrir `hasMore` sem um segundo COUNT.
+ * Ordena por `created_at, id` (estável) — mesmo par do índice parcial da migration.
+ */
+export async function findAvailableGuilds({ search, limit, offset }, db = getPool()) {
+  const rows = await db.unsafe(
+    `SELECT g.id, g.name, g.category_id, c.name AS category_name, g.created_at,
+            COUNT(m.user_id)::int AS member_count
+     FROM guilds g
+     JOIN categories c ON c.id = g.category_id
+     LEFT JOIN guild_memberships m ON m.guild_id = g.id
+     WHERE g.active = TRUE AND g.is_public = TRUE
+       AND ($1::text IS NULL OR g.name ILIKE '%' || $1 || '%')
+     GROUP BY g.id, c.name
+     ORDER BY g.created_at ASC, g.id ASC
+     LIMIT $2 OFFSET $3`,
+    [search ?? null, limit + 1, offset],
+  );
+  const hasMore = rows.length > limit;
+  return { guilds: rows.slice(0, limit).map(toAvailableGuild), hasMore };
+}
+
 /**
  * Insere a guilda e o vínculo do criador na MESMA transação (o `tx` recebido).
  * `guildData.adminRole` é definido pela Camada 2; aqui apenas é gravado.

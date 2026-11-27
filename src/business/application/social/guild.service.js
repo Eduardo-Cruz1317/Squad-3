@@ -13,6 +13,7 @@ import {
   GUILD_MESSAGES,
   parsePositiveId,
   validateGuildInput,
+  validateListAvailableGuildsInput,
 } from '../../domain/social/guild-policy.js';
 import { withTransaction as defaultWithTransaction } from '../../../persistence/postgres/transaction.js';
 import * as defaultRepository from '../../../persistence/repositories/social/guilds.repository.js';
@@ -67,7 +68,21 @@ export function createGuildService({ repository, withTransaction }) {
     return repository.listCategories();
   }
 
-  return { createGuild, listGuildCategories };
+  /**
+   * Issue "Visualizar guildas disponíveis": só ativas e públicas (garantido pela
+   * Camada 3), em páginas de até 20, com busca opcional por nome.
+   */
+  async function listAvailableGuilds(params, userId) {
+    if (parsePositiveId(userId) === null) throw new UnauthenticatedError();
+
+    const { value, errors } = validateListAvailableGuildsInput(params);
+    if (errors) throw new ValidationError(errors);
+
+    const { guilds, hasMore } = await repository.findAvailableGuilds(value);
+    return { guilds, hasMore, limit: value.limit, offset: value.offset };
+  }
+
+  return { createGuild, listGuildCategories, listAvailableGuilds };
 }
 
 const defaultService = createGuildService({
@@ -77,3 +92,4 @@ const defaultService = createGuildService({
 
 export const createGuild = defaultService.createGuild;
 export const listGuildCategories = defaultService.listGuildCategories;
+export const listAvailableGuilds = defaultService.listAvailableGuilds;

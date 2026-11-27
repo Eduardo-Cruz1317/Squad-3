@@ -8,6 +8,7 @@
 // quem valida é a Camada 2 e o erro volta como VALIDATION_ERROR.
 import {
   createGuild as defaultCreateGuild,
+  listAvailableGuilds as defaultListAvailableGuilds,
   listGuildCategories as defaultListGuildCategories,
 } from '../../business/application/social/guild.service.js';
 import { requireUser as defaultRequireUser } from '../../security/require-user.js';
@@ -46,6 +47,7 @@ export function createGuildsRoute({
   requireUser = defaultRequireUser,
   createGuild = defaultCreateGuild,
   listGuildCategories = defaultListGuildCategories,
+  listAvailableGuilds = defaultListAvailableGuilds,
 } = {}) {
   /** POST /api/v1/guilds -> 201 | 400 | 401 | 409 */
   async function create({ method, headers, body, bodyError } = {}) {
@@ -79,5 +81,19 @@ export function createGuildsRoute({
     }
   }
 
-  return { create, categories };
+  /**
+   * GET /api/v1/guilds -> 200 | 400 | 401 | 500 (Issue "Visualizar guildas disponíveis")
+   * `query` aceita `search`, `limit` e `offset`, todos opcionais.
+   */
+  async function list({ method, headers, query } = {}) {
+    if (method !== 'GET') return methodNotAllowed('GET');
+    try {
+      const userId = await requireUser(headers);
+      return json(200, await listAvailableGuilds(query ?? {}, userId));
+    } catch (error) {
+      return errorResponse(error);
+    }
+  }
+
+  return { create, categories, list };
 }

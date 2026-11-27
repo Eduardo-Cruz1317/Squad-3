@@ -42,6 +42,11 @@ async function readBody(req) {
   return { body: raw };
 }
 
+// req.url é só path+query (local e Vercel); o host da base é descartado, não importa qual seja.
+function parseQuery(req) {
+  return Object.fromEntries(new URL(req.url, 'http://localhost').searchParams);
+}
+
 function send(res, { status, headers = {}, body }) {
   const payload = JSON.stringify(body);
   res.statusCode = status;
@@ -61,11 +66,16 @@ async function run(res, handle) {
   }
 }
 
-/** POST /api/v1/guilds */
+/** GET (listar, Issue "Visualizar guildas disponíveis") ou POST (criar) /api/v1/guilds */
 exports.guilds = (req, res) =>
   run(res, async (route) => {
-    const parsed = req.method === 'POST' ? await readBody(req) : {};
-    return route.create({ method: req.method, headers: req.headers, ...parsed });
+    if (req.method === 'GET') {
+      return route.list({ method: req.method, headers: req.headers, query: parseQuery(req) });
+    }
+    if (req.method === 'POST') {
+      return route.create({ method: req.method, headers: req.headers, ...(await readBody(req)) });
+    }
+    return { status: 405, headers: { Allow: 'GET, POST' }, body: { code: 'METHOD_NOT_ALLOWED', message: 'Método não permitido.' } };
   });
 
 /** GET /api/v1/guild-categories */

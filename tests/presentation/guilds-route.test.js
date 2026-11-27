@@ -94,6 +94,64 @@ test('GET categorias -> 200 com lista; sem sessão -> 401; outro método -> 405'
   assert.equal(wrongMethod.headers.Allow, 'GET');
 });
 
+// ---- GET /api/v1/guilds — Issue "Visualizar guildas disponíveis" -------------------------------
+
+test('GET /guilds sem sessão -> 401 e o serviço não é chamado', async () => {
+  let called = false;
+  const route = createGuildsRoute({ requireUser: rejectAuth, listAvailableGuilds: async () => (called = true) });
+  const res = await route.list({ method: 'GET', headers: {} });
+  assert.equal(res.status, 401);
+  assert.equal(called, false);
+});
+
+test('GET /guilds com sucesso -> 200 e repassa a query (search/limit/offset) ao serviço', async () => {
+  let received;
+  const body = { guilds: [{ id: 1, name: 'Física Básica' }], hasMore: false, limit: 20, offset: 0 };
+  const route = createGuildsRoute({
+    requireUser: authenticated,
+    listAvailableGuilds: async (query, userId) => {
+      received = { query, userId };
+      return body;
+    },
+  });
+  const res = await route.list({ method: 'GET', headers: AUTH, query: { search: 'física', limit: '10' } });
+  assert.equal(res.status, 200);
+  assert.deepEqual(res.body, body);
+  assert.deepEqual(received, { query: { search: 'física', limit: '10' }, userId: 42 });
+});
+
+test('GET /guilds sem query -> chama o serviço com {} (padrões ficam a cargo da Camada 2)', async () => {
+  let received;
+  const route = createGuildsRoute({
+    requireUser: authenticated,
+    listAvailableGuilds: async (query) => {
+      received = query;
+      return { guilds: [], hasMore: false, limit: 20, offset: 0 };
+    },
+  });
+  await route.list({ method: 'GET', headers: AUTH });
+  assert.deepEqual(received, {});
+});
+
+test('método diferente de GET em /guilds (list) -> 405 com Allow: GET', async () => {
+  const route = createGuildsRoute({ requireUser: authenticated });
+  const res = await route.list({ method: 'POST', headers: AUTH });
+  assert.equal(res.status, 405);
+  assert.equal(res.headers.Allow, 'GET');
+});
+
+test('limit/offset inválidos (ValidationError da Camada 2) -> 400 com `fields`', async () => {
+  const route = createGuildsRoute({
+    requireUser: authenticated,
+    listAvailableGuilds: async () => {
+      throw new (await import('../../src/shared/errors.js')).ValidationError({ limit: 'O limite deve ser um número inteiro entre 1 e 20.' });
+    },
+  });
+  const res = await route.list({ method: 'GET', headers: AUTH, query: { limit: '21' } });
+  assert.equal(res.status, 400);
+  assert.ok(res.body.fields.limit);
+});
+
 // ---- Camada 1 + serviço real (Camada 2) com repositório em memória -----------------------------
 // Cobre a seção "Testes" da tarefa pelo caminho completo rota -> serviço -> repositório.
 
@@ -105,10 +163,28 @@ function buildRoute({ raceOnInsert } = {}) {
     listCategories: async () => store.categories,
     createGuildWithAdmin: async (tx, { name, categoryId, adminRole }, userId) => {
       if (raceOnInsert) throw raceOnInsert;
-      const guild = { id: store.guilds.length + 1, name, categoryId, createdAt: 'agora' };
+      const guild = { id: store.guilds.length + 1, name, categoryId, createdAt: store.guilds.length };
       store.guilds.push(guild);
       store.memberships.push({ guildId: guild.id, userId, role: adminRole });
       return guild;
+    },
+    // Fake de `findAvailableGuilds`: todo guild criado no teste conta como disponível
+    // (o filtro ativa+pública é garantia da Camada 3/SQL real, coberta à parte com Postgres).
+    findAvailableGuilds: async ({ search, limit, offset }) => {
+      const matches = store.guilds.filter(
+        (guild) => !search || guild.name.toLowerCase().includes(search.toLowerCase()),
+      );
+      const ordered = [...matches].sort((a, b) => a.createdAt - b.createdAt);
+      const page = ordered.slice(offset, offset + limit + 1);
+      const guilds = page.slice(0, limit).map((guild) => ({
+        id: guild.id,
+        name: guild.name,
+        categoryId: guild.categoryId,
+        categoryName: store.categories.find((c) => c.id === guild.categoryId)?.name ?? null,
+        memberCount: store.memberships.filter((m) => m.guildId === guild.id).length,
+        createdAt: guild.createdAt,
+      }));
+      return { guilds, hasMore: page.length > limit };
     },
   };
   const service = createGuildService({ repository, withTransaction: (work) => work({}) });
@@ -177,4 +253,71 @@ test('corrida: UNIQUE/FK no banco depois das pré-verificações vira 409/400/40
 
   const user = await post(buildRoute({ raceOnInsert: new ForeignKeyViolationError('userId') }).route, { name: 'Física Básica', categoryId: 1 });
   assert.equal(user.status, 401);
+});
+
+// ---- GET /api/v1/guilds (list) + serviço real (Camada 2) com repositório em memória ------------
+
+const list = (route, query) => route.list({ method: 'GET', headers: AUTH, query });
+
+test('sem query -> até 20 guildas, mais recentes por último (created_at, id estável)', async () => {
+  const { route } = buildRoute();
+  for (let i = 1; i <= 25; i += 1) {
+    assert.equal((await post(route, { name: `Guilda ${i}`, categoryId: 1 })).status, 201);
+  }
+  const res = await list(route);
+  assert.equal(res.status, 200);
+  assert.equal(res.body.guilds.length, 20);
+  assert.equal(res.body.limit, 20);
+  assert.equal(res.body.offset, 0);
+  assert.equal(res.body.hasMore, true);
+  assert.equal(res.body.guilds[0].name, 'Guilda 1');
+  assert.equal(res.body.guilds.at(-1).name, 'Guilda 20');
+});
+
+test('paginação com offset não duplica nem pula resultados', async () => {
+  const { route } = buildRoute();
+  for (let i = 1; i <= 25; i += 1) await post(route, { name: `Guilda ${i}`, categoryId: 1 });
+
+  const page1 = await list(route, { limit: '20', offset: '0' });
+  const page2 = await list(route, { limit: '20', offset: '20' });
+  assert.equal(page1.body.hasMore, true);
+  assert.equal(page2.body.hasMore, false);
+  assert.equal(page2.body.guilds.length, 5);
+  const ids = [...page1.body.guilds, ...page2.body.guilds].map((g) => g.id);
+  assert.equal(new Set(ids).size, 25); // sem duplicatas
+});
+
+test('busca por nome filtra, sem diferenciar maiúsculas/minúsculas', async () => {
+  const { route } = buildRoute();
+  await post(route, { name: 'Física Básica', categoryId: 1 });
+  await post(route, { name: 'Cálculo I', categoryId: 1 });
+
+  const res = await list(route, { search: 'física' });
+  assert.equal(res.body.guilds.length, 1);
+  assert.equal(res.body.guilds[0].name, 'Física Básica');
+});
+
+test('retorna categoria e total de membros de cada guilda', async () => {
+  const { route } = buildRoute();
+  await post(route, { name: 'Física Básica', categoryId: 1 });
+
+  const res = await list(route);
+  assert.equal(res.body.guilds[0].categoryName, 'Matemática');
+  assert.equal(res.body.guilds[0].memberCount, 1); // o criador, como admin
+});
+
+test('nenhuma guilda correspondente -> lista vazia (não é erro)', async () => {
+  const { route } = buildRoute();
+  const res = await list(route, { search: 'não existe' });
+  assert.equal(res.status, 200);
+  assert.deepEqual(res.body.guilds, []);
+  assert.equal(res.body.hasMore, false);
+});
+
+test('limit acima de 20 -> 400; limit/offset não numéricos -> 400', async () => {
+  const { route } = buildRoute();
+  for (const query of [{ limit: '21' }, { limit: '0' }, { limit: 'abc' }, { offset: '-1' }, { offset: 'abc' }]) {
+    const res = await list(route, query);
+    assert.equal(res.status, 400);
+  }
 });
